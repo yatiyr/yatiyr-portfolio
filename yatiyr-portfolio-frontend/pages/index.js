@@ -18,22 +18,7 @@ export default function Home() {
       <BaseLayout backgroundColor={backgroundColor}>
         <Flex height="100vh"
               flexDirection="column">
-          <Text height="900px">Eren Dere</Text>
-          <Text >Eren Dere</Text> 
-          <Text >Eren Dere</Text> 
-          <Text >Eren Dere</Text> 
-          <Text >Eren Dere</Text> 
-          <Text >Eren Dere</Text> 
-          <Text >Eren Dere</Text> 
-          <Text >Eren Dere</Text> 
-          <Text >Eren Dere</Text> 
-          <Text >Eren Dere</Text> 
-          <Text >Eren Dere</Text> 
-          <Text >Eren Dere</Text> 
-          <Text >Eren Dere</Text> 
-          <Text >Eren Dere</Text> 
-          <Text >Eren Dere</Text> 
-          <Text >Eren Dere</Text>                                                                                                                                             
+          <Text height="900px">Eren Dere</Text>                                                                                                                                           
         </Flex>                                                                                                               
       </BaseLayout>
     </>

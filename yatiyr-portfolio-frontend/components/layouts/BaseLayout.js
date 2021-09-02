@@ -9,7 +9,7 @@ const BaseLayout = (props) => {
       direction="column"
       align="center"
       alignItems="stretch"
-      mx={{sm: "0px", md: "20px", lg: "50px", xl: "100px", "2xl": "200px"}}
+      mx={{sm: "0px", md: "5px", lg: "10px", xl: "20px", "2xl": "30px"}}
       backgroundColor={props.backgroundColor}
     >
       <Header/>
