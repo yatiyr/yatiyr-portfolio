@@ -7,6 +7,7 @@ import BaseLayout from 'components/layouts/BaseLayout';
 import Header from 'components/sections/Header';
 
 import { Flex } from '@chakra-ui/react';
+import IndexMain from 'components/sections/IndexMain';
 
 export default function Home() {
 
@@ -16,10 +17,7 @@ export default function Home() {
   return (
     <>
       <BaseLayout backgroundColor={backgroundColor}>
-        <Flex height="100vh"
-              flexDirection="column">
-          <Text height="900px">Eren Dere</Text>                                                                                                                                           
-        </Flex>                                                                                                               
+        <IndexMain/>                                                                                                             
       </BaseLayout>
     </>
   )

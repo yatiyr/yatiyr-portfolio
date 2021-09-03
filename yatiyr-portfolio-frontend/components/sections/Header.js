@@ -34,7 +34,7 @@ const HeaderLink = (props) => {
         color={props.baseColor}
         bg={props.backgroundColor}
         _focus={{boxShadow: "none"}}
-        _hover={{background: props.backgroundColor, color: props.hoverColor}}
+        _hover={{background: props.hoverBackgroundColor, color: props.hoverColor}}
         _active={{background: props.activeBackgroundColor, color: props.activeColor}}
         rounded={false}
         minHeight="40px"
@@ -56,10 +56,12 @@ const HeaderLogo = (props) => {
         color={props.baseColor}
         bg={props.backgroundColor}
         _focus={{boxShadow: "none"}}
-        _hover={{background: props.backgroundColor, color: props.hoverColor}}
+        _hover={{background: props.hoverBackgroundColor, color: props.hoverColor}}
         _active={{background: props.activeBackgroundColor, color: props.activeColor}}
         rounded={false}
+        minHeight="40px"        
         transition="background .3s, color .3s"
+        height="100%"
         display={props.display}
       >
         {props.text}
@@ -73,24 +75,31 @@ const AdminMenu = (props) => {
     <Menu>
       <MenuButton 
         userSelect="none"
-        as={Box}
+        as={Button}
+        alignItems="center"
+        justifyContent="center"
         cursor="pointer"
         color={props.baseColor}
-        _hover={{color: props.hoverColor}}
-        _active={{color: props.activeColor}}
-        transition="color .3s"
+        bg={props.backgroundColor}
+        rounded={false}                
+        _hover={{background: props.hoverBackgroundColor, color: props.hoverColor}}
+        _active={{background: props.activeBackgroundColor, color: props.activeColor}}
+        _focus={{boxShadow: "none"}}        
+        width={props.menuToggled ? "100%" : "auto"}
+        transition="background .3s, color .3s"
+        zIndex="100"
         >
-        Admin
+          Admin
       </MenuButton>
-      <MenuList border="none" borderRadius="none">
+      <MenuList border="none" borderRadius="none" zIndex="100">
         <MenuItem color={props.baseColor}
-                  _hover={{color: props.hoverColor}}
-                  _active={{color: props.activeColor}}>
+                  _hover={{background: props.hoverBackgroundColor, color: props.hoverColor}}
+                  _active={{background: props.activeBackgroundColor, color: props.activeColor}}>
           <NextLink href="/" passHref>Dashboard</NextLink>
         </MenuItem>
         <MenuItem color={props.baseColor}
-                  _hover={{color: props.hoverColor}}
-                  _active={{color: props.activeColor}}>
+                  _hover={{background: props.hoverBackgroundColor, color: props.hoverColor}}
+                  _active={{background: props.activeBackgroundColor, color: props.activeColor}}>
           <NextLink href="/" passHref>Create a Blog</NextLink>
         </MenuItem>       
       </MenuList>
@@ -114,13 +123,15 @@ const Header = (props) => {
 
   const [menuToggled, setMenuToggled] = useState(false);
 
+  const headerBorderColor = useColorModeValue("gray.100"," gray.300");
+
   const color           = useColorModeValue("black", "white");
   const activeColor     = useColorModeValue("gray.100", "gray.800");
   const backgroundColor = useColorModeValue("gray.50", "gray.900");
 
-  const logoBaseColor   = useColorModeValue("gray.600", "gray.500");
-  const logoHoverColor  = useColorModeValue("gray.800", "gray.100");
-  const logoActiveColor = useColorModeValue("gray.900", "gray.100");
+  const logoBaseColor   = useColorModeValue("purple.500", "purple.300");
+  const logoHoverColor  = useColorModeValue("purple.600", "purple.200");
+  const logoActiveColor = useColorModeValue("purple.700", "purple.100");
 
   const iconBaseColor   = useColorModeValue("gray.600","gray.500");
   const iconHoverColor  = useColorModeValue("gray.700", "gray.400");
@@ -128,7 +139,11 @@ const Header = (props) => {
 
   const headerLinkBaseColor = useColorModeValue("gray.600", "gray.400");
   const headerLinkHoverColor = useColorModeValue("gray.800", "gray.100");
-  const headerLinkActiveColor = useColorModeValue("gray.900", "gray.100");    
+  const headerLinkActiveColor = useColorModeValue("gray.900", "gray.100");
+
+  const menuItemHoverColor = useColorModeValue("gray.200", "gray.700");
+
+  const borderHandler = (menuToggled) => (menuToggled ? "0px" : "2px")
 
   return (
     <Flex
@@ -138,7 +153,12 @@ const Header = (props) => {
       alignItems="stretch"
       minWidth="356px"
       width="auto"
+      minHeight="40px"
       top="0"
+      borderBottom="1px"
+      borderBottomColor={headerBorderColor}
+      fontFamily="Inter"
+      zIndex="100"      
     >
       {/* Desktop Part */}      
       <HeaderLogo 
@@ -178,7 +198,7 @@ const Header = (props) => {
         <LinkIconElement padding="0 20px 0 0"to="https://github.com/yatiyr/" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor} icon={FaGithub}/>
         <LinkIconElement padding="0 20px 0 0"to="https://www.linkedin.com/in/eren-dere/" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor} icon={FaLinkedin}/>        
         <DarkModeSwitch padding="0 20px 0 0" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor}/>
-        <AdminMenu baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor}/>
+        <AdminMenu menuToggled={menuToggled} hoverBackgroundColor={menuItemHoverColor} backgroundColor={backgroundColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor}/>
         <HeaderLink to="/" text="Login" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>        
       </Flex>
       {/* Desktop Part END! */}
@@ -206,7 +226,9 @@ const Header = (props) => {
             activeBackgroundColor={backgroundColor}/> 
 
           <Flex
-            flexDirection="row">
+            flexDirection="row"
+            height="40px"
+            alignItems="center">
             <DarkModeSwitch padding="0 20px 0 0" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor}/>
             <HeaderMenuIcon
               padding="0 20px 0 0"            
@@ -224,19 +246,23 @@ const Header = (props) => {
           overflow="hidden"
           height="100%"
           >
-            <HeaderLink to="/" text="Home" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
-            <HeaderLink to="/" text="About" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
-            <HeaderLink to="/" text="Blog" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
-            <HeaderLink to="/" text="Cv" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+            <HeaderLink to="/" text="Home" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+            <HeaderLink to="/" text="About" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+            <HeaderLink to="/" text="Blog" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+            <HeaderLink to="/" text="Cv" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
             <Flex
               flexDirection="row"
               justifyContent="center"
               alignItems="center"
               flexGrow="1"
-              minHeight="40px">
-              <AdminMenu baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor}/>
+              minHeight="40px"
+              cursor="pointer"
+              _hover={{background: menuItemHoverColor}}
+              _active={{background: backgroundColor}}
+              transition="background .3s, color .3s">
+              <AdminMenu menuToggled={menuToggled} hoverBackgroundColor={menuItemHoverColor} backgroundColor={backgroundColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor}/>
             </Flex>
-            <HeaderLink to="/" text="Login" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+            <HeaderLink to="/" text="Login" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
             <Flex
               flexDirection="row"
               justifyContent="center"
