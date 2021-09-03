@@ -1,0 +1,9 @@
+.truncated {
+    max-height: 8rem;
+    -webkit-box-orient: vertical !important;
+    display: block !important;
+    display: -webkit-box !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    -webkit-line-clamp: 2 !important;
+}

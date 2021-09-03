@@ -1,6 +1,7 @@
 import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
 import customTheme from 'styles/customTheme';
 import GlobalStyle from 'styles/global';
+import 'styles/globalCss.css';
 
 function MyApp({ Component, pageProps }) {
   return (

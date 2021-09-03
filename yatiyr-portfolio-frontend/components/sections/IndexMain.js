@@ -2,6 +2,7 @@ import { Badge, Flex, Heading, Image, Text, useColorModeValue } from '@chakra-ui
 import IconElement from 'components/ui/IconElement';
 import { MetuIcon, CengIcon } from 'styles/icons/customIcons';
 import Typed from 'react-typed';
+import BlogInfoBox from 'components/ui/BlogInfoBox';
 
 const WelcomeSection = (props) => {
 
@@ -16,7 +17,7 @@ const WelcomeSection = (props) => {
     return(
         <Flex
             flexDirection={{sm: "column", lmd: "column", md: "row", lg: "row", xl: "row", "2xl": "row"}}
-            minHeight={{sm: "800px", lmd: "750px", md: "600px", lg: "800px", xl: "800px", "2xl": "800px"}}
+            minHeight={{sm: "900px", lmd: "750px", md: "600px", lg: "700px", xl: "700px", "2xl": "700px"}}
             zIndex="1"
             justifyContent={{sm: "start", lmd: "start", md: "start", lg: "center", xl: "center", "2xl": "center"}}
             alignItems={{sm: "center", lmd: "center", md: "start", lg: "center", xl: "center", "2xl": "center"}}            
@@ -82,14 +83,24 @@ const WelcomeSection = (props) => {
 
 const IndexMain = (props) => {
 
+    
+    const headingColor = useColorModeValue("black","white");
+    const paragraphColor = useColorModeValue("gray.800", "gray.300");
+
 
 
     return(
         <>
             <WelcomeSection/>
             <Flex height="1000px"
-                  backgroundColor="gray.900">
-
+                  justifyContent="center"
+                  alignContent="center">
+                <BlogInfoBox 
+                    imagePath="/images/veachAjarPathTraced.png"
+                    title="Ray Tracer Journey"
+                    date="02/07/2021"
+                    headingColor={headingColor}
+                    paragraphColor={paragraphColor}></BlogInfoBox>
             </Flex>
         </>
     )
