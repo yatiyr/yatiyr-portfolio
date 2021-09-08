@@ -6,7 +6,7 @@ const Highlights = (props) => {
 
 
     return(
-        <Flex height="1000px"
+        <Flex
         justifyContent="start"
         alignItems="center"
         flexDirection="column"
