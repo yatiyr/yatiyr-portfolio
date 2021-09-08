@@ -3,6 +3,7 @@ import IconElement from 'components/ui/IconElement';
 import { MetuIcon, CengIcon } from 'styles/icons/customIcons';
 import Typed from 'react-typed';
 import BlogInfoBox from 'components/ui/BlogInfoBox';
+import Highlights from './Highlights';
 
 const WelcomeSection = (props) => {
 
@@ -23,8 +24,8 @@ const WelcomeSection = (props) => {
             alignItems={{sm: "center", lmd: "center", md: "start", lg: "center", xl: "center", "2xl": "center"}}            
             borderBottom="1px"
             borderBottomColor={sectionBorderColor}
-            my={{sm: "50px", lmd: "40px", md: "40px", lg: "40px", xl: "40px", "2xl": "40px"}}
-            mx={{sm: "0", lmd: "0", md: "50px", lg: "100px", xl: "200px", "2xl": "300px"}}>
+            my={{sm: "10px", lmd: "40px", md: "40px", lg: "40px", xl: "40px", "2xl": "40px"}}
+            mx={{sm: "0", lmd: "0", md: "0", lg: "75px", xl: "100px", "2xl": "150px"}}>
                 <Image 
                     boxSize="400px"
                     objectFit="cover"
@@ -92,16 +93,7 @@ const IndexMain = (props) => {
     return(
         <>
             <WelcomeSection/>
-            <Flex height="1000px"
-                  justifyContent="center"
-                  alignContent="center">
-                <BlogInfoBox 
-                    imagePath="/images/veachAjarPathTraced.png"
-                    title="Ray Tracer Journey"
-                    date="02/07/2021"
-                    headingColor={headingColor}
-                    paragraphColor={paragraphColor}></BlogInfoBox>
-            </Flex>
+            <Highlights headingColor={headingColor} paragraphColor={paragraphColor}/>    
         </>
     )
 
