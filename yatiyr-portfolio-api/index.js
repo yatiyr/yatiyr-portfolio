@@ -8,6 +8,7 @@ async function runServer() {
     server.use(bodyParser.json());
 
     server.use('/api/v1/blogs', require('./routes/blogs'));
+    server.use('/api/v1/media', require('./routes/media'));
 
     const PORT = parseInt(process.env.PORT, 10) || 3001;
     server.listen(PORT, (err) => {

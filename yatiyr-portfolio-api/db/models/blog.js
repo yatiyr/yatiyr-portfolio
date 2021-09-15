@@ -4,6 +4,7 @@ const Schema   = mongoose.Schema;
 const blogSchema = new Schema({
     slug : {type: String, unique: true, sparse: true},
     title: {type: String, required: true, maxlength: 96},
+    headImage: {type: String, required: false},
     subTitle: {type: String, required: true},
     content: {type: String, required: true},
     userId: {type: String, required: true},

@@ -25,7 +25,7 @@ const WelcomeSection = (props) => {
             borderBottom="1px"
             borderBottomColor={sectionBorderColor}
             my={{sm: "10px", lmd: "40px", md: "40px", lg: "40px", xl: "40px", "2xl": "40px"}}
-            mx={{sm: "0", lmd: "0", md: "0", lg: "75px", xl: "100px", "2xl": "150px"}}>
+            mx={{sm: "0", lmd: "0", md: "20px", lg: "75px", xl: "100px", "2xl": "150px"}}>
                 <Image 
                     boxSize="400px"
                     objectFit="cover"
