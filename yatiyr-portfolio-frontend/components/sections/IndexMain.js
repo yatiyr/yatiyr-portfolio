@@ -13,7 +13,7 @@ const WelcomeSection = (props) => {
     const iconBaseColor = useColorModeValue("gray.500", "gray.200");
     const iconHoverColor = useColorModeValue("gray.700", "gray.100");
 
-    const sectionBorderColor = useColorModeValue("black", "purple.200")
+    const sectionBorderColor = useColorModeValue("black", "purple.200");
 
     return(
         <Flex
@@ -87,13 +87,18 @@ const IndexMain = (props) => {
     
     const headingColor = useColorModeValue("black","white");
     const paragraphColor = useColorModeValue("gray.800", "gray.300");
-
+    const linkHoverColor = useColorModeValue("purple.600", "purple.300");
+    const imageBackgroundColor = useColorModeValue("gray.300", "gray.700")
 
 
     return(
         <>
             <WelcomeSection/>
-            <Highlights headingColor={headingColor} paragraphColor={paragraphColor}/>    
+            <Highlights
+                headingColor={headingColor}
+                paragraphColor={paragraphColor}
+                linkHoverColor={linkHoverColor}
+                imageBackgroundColor={imageBackgroundColor}/>    
         </>
     )
 

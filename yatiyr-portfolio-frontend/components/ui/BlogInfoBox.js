@@ -10,19 +10,32 @@ const BlogInfoBox = (props) => {
             justifyContent="start"
             alignItems="center"
             textOverflow="ellipsis">
-            <Image
-                
+            <Box marginBottom="10px"
+                 as="a"
+                 href={props.slug}
+                 background={props.imageBackgroundColor}
+                 width="100%"
+                 display="flex"
+                 flexDirection="row"
+                 justifyContent="center"
+                 transition="background .3s">
+                <Image                
                 objectFit="cover"
                 src={props.imagePath}
                 alt="blogInfo"
-                marginBottom="10px"/>
+                />
+            </Box>
             <Flex flexDir="column"
                   width="100%"
                   height="100%">
                 <Flex flexDir="row"
                        width="100%"
                        justifyContent="start">
-                    <Heading color={props.headingColor}
+                    <Heading
+                             as="a"
+                             href={props.slug}
+                             _hover={{color: props.linkHoverColor}}                             
+                             color={props.headingColor}
                              transition="background .3s, color .3s"
                              fontSize={{sm: "2xl", lmd: "2xl", md: "3xl", lg: "4xl", xl: "4xl", "2xl": "4xl"}}>
                                  {props.title}
@@ -38,17 +51,22 @@ const BlogInfoBox = (props) => {
                       className="truncated"
                       color={props.paragraphColor}
                       transition="background .3s, color .3s">
-                    Fugiat Lorem exercitation sint aliquip consequat irure consectetur deserunt incididunt proident tempor labore qui. Minim nisi laboris reprehenderit enim elit commodo est dolor laborum cupidatat. Magna id dolor mollit ut excepteur mollit esse id ut anim excepteur ad Lorem nostrud. Anim et esse non dolore fugiat aute officia elit. Reprehenderit officia ea Lorem non exercitation amet esse irure culpa magna eiusmod sit.
+                    {props.description}
                 </Box>
-                <Box my="10px">
+                <Box as="a"
+                     href={props.slug}
+                     my="10px"
+                     color={props.paragraphColor}
+                     _hover={{color: props.linkHoverColor}}
+                     transition="background .3s, color .3s">
                     Read More
                 </Box>
                 <Flex flexDir="row"
                       width="100%"
                       height="16px"
                       justifyContent="start">
-                    <Badge colorScheme="blue">by erendere</Badge>
-                    <Badge marginLeft="20px" colorScheme="purple">20/07/2021</Badge>
+                    <Badge colorScheme="blue">by {props.owner}</Badge>
+                    <Badge marginLeft="20px" colorScheme="purple">{props.date}</Badge>
                 </Flex>                     
             </Flex>
         </Flex>
