@@ -86,8 +86,8 @@ const IndexMain = (props) => {
 
     
     const headingColor = useColorModeValue("black","white");
-    const paragraphColor = useColorModeValue("gray.800", "gray.300");
-    const linkHoverColor = useColorModeValue("purple.600", "purple.300");
+    const paragraphColor = useColorModeValue("gray.700", "gray.400");
+    const linkHoverColor = useColorModeValue("purple.600", "purple.400");
     const imageBackgroundColor = useColorModeValue("gray.300", "gray.700")
 
 
