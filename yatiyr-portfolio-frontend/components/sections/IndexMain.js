@@ -62,10 +62,10 @@ const WelcomeSection = (props) => {
                             my="0px"
                             fontSize = {{sm: "xl", lmd: "xl", md: "md", lg: "lg", xl: "xl", "2xl": "xl"}}
                             transition="background .3s, color .3s">
-                            I'm Eren. This is my blog site. I'm building it with NextJS and
+                            I&apos;m Eren. This is my blog site. I&apos;m building it with NextJS and
                             ChakraUI. I am a graduate student in
                             Middle East Technical University, Computer Engineering Department, Ankara, Turkey. Here, I will post my fun
-                            projects and also keep track of the things I'm trying to
+                            projects and also keep track of the things I&apos;m trying to
                             learn. 
                         </Text>
                     <Flex

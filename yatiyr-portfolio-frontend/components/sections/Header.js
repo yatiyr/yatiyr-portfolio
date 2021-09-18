@@ -23,6 +23,7 @@ import { useColorModeValue,
          MenuCommand,
          MenuDivider,
          Box } from "@chakra-ui/react";
+import { isAuthorized } from 'utils/auth0';
 
 const HeaderLink = (props) => {
   return(
@@ -179,7 +180,6 @@ const Header = (props) => {
         flexGrow="1"
         backgroundColor={backgroundColor}
         transition="background .3s, color .3s">
-        <HeaderLink to="/" text="Home" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
         <HeaderLink to="/" text="About" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
         <HeaderLink to="/" text="Blog" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
         <HeaderLink to="/" text="Cv" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
@@ -198,8 +198,19 @@ const Header = (props) => {
         <LinkIconElement padding="0 20px 0 0"to="https://github.com/yatiyr/" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor} icon={FaGithub}/>
         <LinkIconElement padding="0 20px 0 0"to="https://www.linkedin.com/in/eren-dere/" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor} icon={FaLinkedin}/>        
         <DarkModeSwitch padding="0 20px 0 0" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor}/>
-        <AdminMenu menuToggled={menuToggled} hoverBackgroundColor={menuItemHoverColor} backgroundColor={backgroundColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor}/>
-        <HeaderLink to="/" text="Login" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>        
+        { !props.loading && 
+          <>
+            { props.user && 
+              <>
+                { isAuthorized(props.user, 'admin') && <AdminMenu menuToggled={menuToggled} hoverBackgroundColor={menuItemHoverColor} backgroundColor={backgroundColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor}/> }
+                <HeaderLink to="/api/v1/logout" text="Logout" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>        
+              </>
+            }
+            { !props.user &&
+              <HeaderLink to="/api/v1/login" text="Login" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>                      
+            }
+          </>
+        }
       </Flex>
       {/* Desktop Part END! */}
 
@@ -250,19 +261,33 @@ const Header = (props) => {
             <HeaderLink to="/" text="About" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
             <HeaderLink to="/" text="Blog" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
             <HeaderLink to="/" text="Cv" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
-            <Flex
-              flexDirection="row"
-              justifyContent="center"
-              alignItems="center"
-              flexGrow="1"
-              minHeight="40px"
-              cursor="pointer"
-              _hover={{background: menuItemHoverColor}}
-              _active={{background: backgroundColor}}
-              transition="background .3s, color .3s">
-              <AdminMenu menuToggled={menuToggled} hoverBackgroundColor={menuItemHoverColor} backgroundColor={backgroundColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor}/>
-            </Flex>
-            <HeaderLink to="/" text="Login" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+
+            { !props.loading && 
+              <>
+                { props.user && 
+                  <>
+                    { isAuthorized(props.user, 'admin') &&                     
+                      <Flex
+                      flexDirection="row"
+                      justifyContent="center"
+                      alignItems="center"
+                      flexGrow="1"
+                      minHeight="40px"
+                      cursor="pointer"
+                      _hover={{background: menuItemHoverColor}}
+                      _active={{background: backgroundColor}}
+                      transition="background .3s, color .3s">
+                        <AdminMenu menuToggled={menuToggled} hoverBackgroundColor={menuItemHoverColor} backgroundColor={backgroundColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor}/>
+                      </Flex>                    
+                    }
+                    <HeaderLink to="/api/v1/logout" text="Logout" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>      
+                  </>
+                }
+                { !props.user &&
+                  <HeaderLink to="/api/v1/login" text="Login" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>                                 
+                }
+              </>
+            }            
             <Flex
               flexDirection="row"
               justifyContent="center"

@@ -2,7 +2,8 @@ import { Flex, useProps } from '@chakra-ui/react';
 import Header from 'components/sections/Header';
 
 const BaseLayout = (props) => {
-  const { className, user, loading, children } = props;
+
+  const { user, loading, children } = props;
 
   return (
     <Flex
@@ -11,7 +12,9 @@ const BaseLayout = (props) => {
       alignItems="stretch"
       backgroundColor={props.backgroundColor}
     >
-      <Header/>
+      <Header
+        user={user}
+        loading={loading}/>
       {children}
       {/* Buraya footer girecek */}
     </Flex>
