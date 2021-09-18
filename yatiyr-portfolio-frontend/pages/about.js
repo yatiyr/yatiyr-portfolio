@@ -1,10 +1,8 @@
 import BaseLayout from 'components/layouts/BaseLayout';
-import IndexMain from 'components/sections/IndexMain';
 import { useGetUser } from "actions/user";
-import { useColorModeValue } from "@chakra-ui/react";
+import { Heading, useColorModeValue } from "@chakra-ui/react";
 
-export default function Home() {
-
+const About = () => {
   // Load user information
   const { data, loading } = useGetUser();
 
@@ -16,8 +14,13 @@ export default function Home() {
         user={data}
         loading={loading}
         backgroundColor={backgroundColor}>
-        <IndexMain/>                                                                                                             
+        <>
+            <Heading color={backgroundColor}>About page</Heading>
+        </>                                                                                                            
       </BaseLayout>
     </>
   )
+
 }
+
+export default About;

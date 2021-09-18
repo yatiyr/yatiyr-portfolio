@@ -128,11 +128,11 @@ const Header = (props) => {
 
   const color           = useColorModeValue("black", "white");
   const activeColor     = useColorModeValue("gray.100", "gray.800");
-  const backgroundColor = useColorModeValue("gray.50", "gray.900");
+  const backgroundColor = useColorModeValue("white", "gray.900");
 
-  const logoBaseColor   = useColorModeValue("purple.500", "purple.300");
-  const logoHoverColor  = useColorModeValue("purple.600", "purple.200");
-  const logoActiveColor = useColorModeValue("purple.700", "purple.100");
+  const logoBaseColor   = useColorModeValue("purple.600", "purple.300");
+  const logoHoverColor  = useColorModeValue("purple.700", "purple.200");
+  const logoActiveColor = useColorModeValue("purple.800", "purple.100");
 
   const iconBaseColor   = useColorModeValue("gray.600","gray.500");
   const iconHoverColor  = useColorModeValue("gray.700", "gray.400");
@@ -180,7 +180,7 @@ const Header = (props) => {
         flexGrow="1"
         backgroundColor={backgroundColor}
         transition="background .3s, color .3s">
-        <HeaderLink to="/" text="About" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+        <HeaderLink to="/about" text="About" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
         <HeaderLink to="/" text="Blog" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
         <HeaderLink to="/" text="Cv" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
       </Flex>
@@ -257,8 +257,7 @@ const Header = (props) => {
           overflow="hidden"
           height="100%"
           >
-            <HeaderLink to="/" text="Home" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
-            <HeaderLink to="/" text="About" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+            <HeaderLink to="/about" text="About" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
             <HeaderLink to="/" text="Blog" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
             <HeaderLink to="/" text="Cv" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
 

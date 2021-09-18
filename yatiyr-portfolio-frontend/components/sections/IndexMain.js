@@ -7,8 +7,8 @@ import Highlights from './Highlights';
 
 const WelcomeSection = (props) => {
 
-    const headingColor = useColorModeValue("black","white");
-    const paragraphColor = useColorModeValue("gray.800", "gray.300");
+    const headingColor = useColorModeValue("gray.700","gray.200");
+    const paragraphColor = useColorModeValue("gray.600", "gray.400");
 
     const iconBaseColor = useColorModeValue("gray.500", "gray.200");
     const iconHoverColor = useColorModeValue("gray.700", "gray.100");
@@ -85,8 +85,8 @@ const WelcomeSection = (props) => {
 const IndexMain = (props) => {
 
     
-    const headingColor = useColorModeValue("black","white");
-    const paragraphColor = useColorModeValue("gray.700", "gray.400");
+    const headingColor = useColorModeValue("gray.700","gray.200");
+    const paragraphColor = useColorModeValue("gray.600", "gray.400");
     const linkHoverColor = useColorModeValue("purple.600", "purple.400");
     const imageBackgroundColor = useColorModeValue("gray.300", "gray.700")
 
