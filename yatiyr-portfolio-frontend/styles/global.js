@@ -1,6 +1,7 @@
 import { useColorMode, useColorModeValue } from "@chakra-ui/react"; 
 import { Global, css } from '@emotion/react';
 import Fonts from "styles/fonts/fonts";
+import PrismTheme from "./prismTheme";
 
 const GlobalStyle = ({children}) => {
 
@@ -38,7 +39,8 @@ const GlobalStyle = ({children}) => {
 
 
                 `}/>
-                <Fonts/>
+            <Fonts/>
+            <PrismTheme/>
                 {children}
         </>
     )

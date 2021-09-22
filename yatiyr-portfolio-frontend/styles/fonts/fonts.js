@@ -20,4 +20,4 @@ const Fonts = () => (
     <Global styles={JetBrainsMono}/>
   </>
 )
-export default Fonts
+export default Fonts;
