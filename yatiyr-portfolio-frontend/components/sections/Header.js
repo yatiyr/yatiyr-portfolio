@@ -157,17 +157,28 @@ const Header = (props) => {
       minHeight="40px"
       top="0"
       fontFamily="Inter"
-      zIndex="100"      
+      zIndex="100"
+      backgroundColor={backgroundColor}
+      transition="background .3s"                  
     >
-      {/* Desktop Part */}      
-      <HeaderLogo 
-        text="YATIYR" 
-        baseColor={logoBaseColor}
-        hoverColor={logoHoverColor}
-        activeColor={logoActiveColor}
-        backgroundColor={backgroundColor}
-        activeBackgroundColor={backgroundColor}
-        display={{sm: "none", lmd: "flex", md: "flex", lg: "flex", xl: "flex", "2xl": "flex"}}/>
+      {/* Desktop Part */}
+
+      <Box display="flex" flexDirection="row">
+        <DarkModeSwitch 
+          display={{sm: "none", lmd: "flex", md: "flex", lg: "flex", xl: "flex", "2xl": "flex"}}
+          margin="0 0 0 20px" 
+          baseColor={iconBaseColor} 
+          hoverColor={iconHoverColor} 
+          activeColor={iconActiveColor}/>                    
+        <HeaderLogo 
+          text="YATIYR" 
+          baseColor={logoBaseColor}
+          hoverColor={logoHoverColor}
+          activeColor={logoActiveColor}
+          backgroundColor={backgroundColor}
+          activeBackgroundColor={backgroundColor}
+          display={{sm: "none", lmd: "flex", md: "flex", lg: "flex", xl: "flex", "2xl": "flex"}}/>
+      </Box>
 
       <Flex
         display={{sm: "none", lmd: "flex", md: "flex", lg: "flex", xl: "flex", "2xl": "flex"}}
@@ -178,9 +189,9 @@ const Header = (props) => {
         flexGrow="1"
         backgroundColor={backgroundColor}
         transition="background .3s, color .3s">
+        <HeaderLink to="/" text="Home" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>          
         <HeaderLink to="/about" text="About" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
         <HeaderLink to="/blog" text="Blog" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
-        <HeaderLink to="/cv" text="Cv" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
       </Flex>
 
 
@@ -195,7 +206,6 @@ const Header = (props) => {
         <LinkIconElement padding="0 20px 0 0"to="https://steamcommunity.com/id/yatiyr" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor} icon={FaSteam}/>        
         <LinkIconElement padding="0 20px 0 0"to="https://github.com/yatiyr/" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor} icon={FaGithub}/>
         <LinkIconElement padding="0 20px 0 0"to="https://www.linkedin.com/in/eren-dere/" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor} icon={FaLinkedin}/>        
-        <DarkModeSwitch padding="0 20px 0 0" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor}/>
         { !props.loading && 
           <>
             { props.user && 
@@ -203,9 +213,6 @@ const Header = (props) => {
                 { isAuthorized(props.user, 'admin') && <AdminMenu menuToggled={menuToggled} hoverBackgroundColor={menuItemHoverColor} backgroundColor={backgroundColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor}/> }
                 <HeaderLink to="/api/v1/logout" text="Logout" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>        
               </>
-            }
-            { !props.user &&
-              <HeaderLink to="/api/v1/login" text="Login" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>                      
             }
           </>
         }
@@ -218,7 +225,7 @@ const Header = (props) => {
         flexGrow="1"
         justifyContent="start"
         display={{sm: "flex", lmd: "none", md: "none", lg: "none", xl: "none", "2xl": "none"}}
-        height={menuToggled ? "310px" : "40px"}        
+        height={menuToggled ? "200px" : "40px"}        
         backgroundColor={backgroundColor}
         transition="height 0.5s, background .3s, color .3s">
         <Flex 
@@ -226,19 +233,28 @@ const Header = (props) => {
           flexGrow="1"
           flexShrink="1"
           justifyContent="space-between">
-          <HeaderLogo 
-            text="YATIYR" 
-            baseColor={logoBaseColor}
-            hoverColor={logoHoverColor}
-            activeColor={logoActiveColor}
-            backgroundColor={backgroundColor}
-            activeBackgroundColor={backgroundColor}/> 
+
+          <Box display="flex" flexDirection="row">
+            <DarkModeSwitch 
+              display="flex"
+              margin="0 0 0 20px" 
+              baseColor={iconBaseColor} 
+              hoverColor={iconHoverColor} 
+              activeColor={iconActiveColor}/>             
+            <HeaderLogo 
+              text="YATIYR" 
+              baseColor={logoBaseColor}
+              hoverColor={logoHoverColor}
+              activeColor={logoActiveColor}
+              backgroundColor={backgroundColor}
+              activeBackgroundColor={backgroundColor}/> 
+          </Box>
+
 
           <Flex
             flexDirection="row"
             height="40px"
             alignItems="center">
-            <DarkModeSwitch padding="0 20px 0 0" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor}/>
             <HeaderMenuIcon
               padding="0 20px 0 0"            
               onClickHandler={() => {setMenuToggled(!menuToggled);}}
@@ -255,9 +271,9 @@ const Header = (props) => {
           overflow="hidden"
           height="100%"
           >
+            <HeaderLink to="/" text="Home" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>            
             <HeaderLink to="/about" text="About" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
             <HeaderLink to="/blog" text="Blog" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
-            <HeaderLink to="/cv" text="Cv" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
 
             { !props.loading && 
               <>
@@ -280,9 +296,7 @@ const Header = (props) => {
                     <HeaderLink to="/api/v1/logout" text="Logout" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>      
                   </>
                 }
-                { !props.user &&
-                  <HeaderLink to="/api/v1/login" text="Login" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>                                 
-                }
+
               </>
             }            
             <Flex

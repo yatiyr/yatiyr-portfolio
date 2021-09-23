@@ -5,8 +5,13 @@ const IconElement = (props) => {
  
   return(
     <Box 
-      padding={props.padding}>
+      margin={props.margin}
+      display={props.display}
+      justifyContent="center"
+      transition="background .3s">
       <Icon
+          alignSelf="center"
+          justifySelf="center"
           onClick={props.onClickHandler}
           cursor="pointer"
           color={props.baseColor}

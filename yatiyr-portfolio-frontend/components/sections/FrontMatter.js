@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Heading, Avatar, useColorModeValue } from '@chakra-ui/react';
 import { parseISO, format } from 'date-fns';
 import { AiOutlineFieldTime } from 'react-icons/ai';
+import { Image } from '@chakra-ui/react';
 
 const FrontMatter = ({ matter }) => {
 
@@ -30,6 +31,7 @@ const FrontMatter = ({ matter }) => {
                     {matter.readingTime.text}
                 </Box>
             </Box>
+            <Image alt="headImage" src={matter.headImageUrl} width={1501 / 2} height={712 / 2} priority />
         </Box>
     );
 };

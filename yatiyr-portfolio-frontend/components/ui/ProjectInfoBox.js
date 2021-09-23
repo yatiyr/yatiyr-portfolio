@@ -1,18 +1,21 @@
-import { Badge, Box, Flex, Heading, Image, useColorModeValue } from "@chakra-ui/react";
-
+import { Badge, Box, Flex, Heading, Icon, Image, useColorModeValue } from "@chakra-ui/react";
+import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 
 
-const BlogInfoBox = (props) => {
+const ProjectInfoBox = (props) => {
 
     const cardContainerBg = useColorModeValue("white", "gray.900");
+    const cardBorder      = useColorModeValue("none", "1px");
+    const githubIconColor = useColorModeValue("gray.900", "gray.50");
 
     return (
-        <Link href={`blog/${props.slug}`} passHref>
-            <Flex
-                as="a" 
+        <Link href={props.url} passHref>
+            <Flex 
+                as="a"
                 flexDir="column"
-                width="70%"
+                width="100%"
+                height="100%"
                 justifyContent="start"
                 alignItems="center"
                 textOverflow="ellipsis"
@@ -21,23 +24,9 @@ const BlogInfoBox = (props) => {
                 _hover={{boxShadow: "0 12px 24px 0 rgba(0,0,0,0.2)", transform:"translate(0px, -10px)"}}
                 transition="0.3s"
                 cursor="pointer"
-                my="25px">
-                <Box marginBottom="10px"
-                    background={props.imageBackgroundColor}
-                    width="100%"
-                    display="flex"
-                    flexDirection="row"
-                    justifyContent="center"
-                    transition="background .3s">
-                    <Image
-                    objectFit="cover"     
-                    height="200px"
-                    width="100%"
-                    userSelect="none"
-                    src={props.imagePath}
-                    alt="blogInfo"
-                    />
-                </Box>
+                border={cardBorder}
+                
+                >
                 <Flex flexDir="column"
                     width="100%"
                     height="100%"
@@ -49,11 +38,12 @@ const BlogInfoBox = (props) => {
                                 _hover={{color: props.linkHoverColor}}                             
                                 color={props.headingColor}
                                 transition="background .3s, color .3s"
-                                fontSize={{sm: "2xl", lmd: "2xl", md: "3xl", lg: "4xl", xl: "4xl", "2xl": "4xl"}}>
+                                fontSize={{sm: "xl", lmd: "xl", md: "xl", lg: "2xl", xl: "2xl", "2xl": "2xl"}}>
                                     {props.title}
                         </Heading>
                     </Flex>
-                    <Box  
+                    <Box
+                        my="10px" 
                         display="block"
                         width="100%"
                         height="100%"
@@ -65,20 +55,15 @@ const BlogInfoBox = (props) => {
                         transition="background .3s, color .3s">
                         {props.description}
                     </Box>
-                    <Box as="a"
-                        href={props.slug}
-                        my="10px"
-                        color={props.paragraphColor}
-                        _hover={{color: props.linkHoverColor}}
-                        transition="background .3s, color .3s">
-                        Read More
-                    </Box>
                     <Flex flexDir="row"
                         width="100%"
                         height="16px"
-                        justifyContent="start">
-                        <Badge colorScheme="blue">by {props.owner}</Badge>
-                        <Badge marginLeft="20px" colorScheme="purple">{props.date}</Badge>
+                        justifyContent="space-between">
+                            <Flex>
+                                <Badge colorScheme="blue">{props.owner}</Badge>
+                                <Badge marginLeft="20px" colorScheme="purple">{props.language}</Badge>
+                            </Flex>
+                            <Icon color={githubIconColor} as={FaGithub}></Icon>
                     </Flex>                     
                 </Flex>
             </Flex>
@@ -87,4 +72,4 @@ const BlogInfoBox = (props) => {
 }
 
 
-export default BlogInfoBox;
+export default ProjectInfoBox;

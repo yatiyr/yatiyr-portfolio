@@ -7,8 +7,9 @@ const DarkModeSwitch = (props) => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <IconElement 
-      padding={props.padding}
+    <IconElement
+      display={props.display}
+      margin={props.margin}
       icon={colorMode === 'dark' ? FaSun : FaMoon}
       onClickHandler={toggleColorMode}
       baseColor={props.baseColor}

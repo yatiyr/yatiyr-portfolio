@@ -1,4 +1,5 @@
 import { Flex, useProps } from '@chakra-ui/react';
+import Footer from 'components/sections/Footer';
 import Header from 'components/sections/Header';
 
 const BaseLayout = (props) => {
@@ -17,6 +18,7 @@ const BaseLayout = (props) => {
         loading={loading}/>
       {children}
       {/* Buraya footer girecek */}
+      <Footer/>
     </Flex>
   )
 }
