@@ -2,8 +2,6 @@ import BaseLayout from 'components/layouts/BaseLayout';
 import { useGetUser } from "actions/user";
 import { Heading, useColorModeValue, Flex} from "@chakra-ui/react";
 import WelcomeSection from 'components/sections/WelcomeSection';
-import EducationWorkInfoBox from 'components/ui/EducationWorkInfoBox';
-import { MetuIcon, CengIcon } from 'styles/icons/customIcons';
 import Education from 'components/sections/Education';
 import Work from 'components/sections/Work';
 
@@ -14,8 +12,6 @@ const About = () => {
   const backgroundColor = useColorModeValue("white", "gray.900");
   const headingColor = useColorModeValue("gray.700","gray.200");
   const paragraphColor = useColorModeValue("gray.600", "gray.400");
-
-  const metuIconColor = useColorModeValue("red.500","red.300");
 
   return (
     <>

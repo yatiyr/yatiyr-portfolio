@@ -34,7 +34,7 @@ const WelcomeSection = (props) => {
                             textAlign="center"
                             color={headingColor}
                             fontFamily="Ubuntu"
-                            fontSize = {{sm: "5xl", lmd: "5xl", md: "5xl", lg: "5xl", xl: "5xl", "2xl": "5xl"}}                            
+                            fontSize = {{sm: "4xl", lmd: "5xl", md: "5xl", lg: "5xl", xl: "5xl", "2xl": "5xl"}}                            
                             transition="background .3s, color .3s">
                                 
                                 <Typed 
