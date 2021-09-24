@@ -254,7 +254,8 @@ const Header = (props) => {
           <Flex
             flexDirection="row"
             height="40px"
-            alignItems="center">
+            alignItems="center"
+            mx="10px">
             <HeaderMenuIcon
               padding="0 20px 0 0"            
               onClickHandler={() => {setMenuToggled(!menuToggled);}}

@@ -6,7 +6,8 @@ import Link from "next/link";
 const BlogInfoBox = (props) => {
 
     const cardContainerBg = useColorModeValue("white", "gray.900");
-
+    const cardBorder      = useColorModeValue("none", "2px");
+    
     return (
         <Link href={`blog/${props.slug}`} passHref>
             <Flex
@@ -21,6 +22,7 @@ const BlogInfoBox = (props) => {
                 _hover={{boxShadow: "0 12px 24px 0 rgba(0,0,0,0.2)", transform:"translate(0px, -10px)"}}
                 transition="0.3s"
                 cursor="pointer"
+                border={cardBorder}                
                 my="25px">
                 <Box marginBottom="10px"
                     background={props.imageBackgroundColor}
