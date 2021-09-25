@@ -43,6 +43,12 @@ const Highlights = (props) => {
                 fontSize={{sm: "lg", lmd: "xl", md: "2xl", lg: "3xl", xl: "3xl", "2xl": "3xl"}}
                 color={props.headingColor}>Highlighted Blogs</Heading>
 
+            <Flex
+                    justifyContent="start"
+                    alignItems="center"
+                    flexDirection="column"
+                    mx={{sm: "0px", lmd: "10px", md: "20px", lg: "30px", xl: "100px", "2xl": "150px"}}
+                    >
                  {props.highlightedBlogs.map((blog, index) => (
                             <BlogInfoBox
                                 key={index}
@@ -56,7 +62,8 @@ const Highlights = (props) => {
                                 paragraphColor={props.paragraphColor}
                                 linkHoverColor={props.linkHoverColor}
                                 imageBackgroundColor={props.imageBackgroundColor}/>
-                ))}             
+                ))}
+            </Flex>          
         </Flex>
     )
 

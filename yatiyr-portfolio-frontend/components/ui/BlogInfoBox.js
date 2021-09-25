@@ -13,7 +13,7 @@ const BlogInfoBox = (props) => {
             <Flex
                 as="a" 
                 flexDir="column"
-                width="70%"
+                width="100%"
                 justifyContent="start"
                 alignItems="center"
                 textOverflow="ellipsis"
@@ -23,7 +23,8 @@ const BlogInfoBox = (props) => {
                 transition="0.3s"
                 cursor="pointer"
                 border={cardBorder}                
-                my="25px">
+                my="25px"
+                 >
                 <Box marginBottom="10px"
                     background={props.imageBackgroundColor}
                     width="100%"

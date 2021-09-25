@@ -29,6 +29,9 @@ const HeaderLink = (props) => {
   return(
     <NextLink href={props.to} passHref>
       <Button
+        height={props.height}
+        width={props.width}
+        fontSize={props.fontSize}
         aria-label="Header Link"
         variant="ghost"
         as="a"
@@ -51,9 +54,13 @@ const HeaderLogo = (props) => {
   return (
     <NextLink href="/" passHref>
       <Button
+        fontSize="2xl"
+        height="100%"
+        width="100%"
         aria-label="Header Logo"
         variant="ghost"
         as="a"
+        margin={props.margin}
         color={props.baseColor}
         bg={props.backgroundColor}
         _focus={{boxShadow: "none"}}
@@ -62,7 +69,6 @@ const HeaderLogo = (props) => {
         rounded={false}
         minHeight="40px"        
         transition="background .3s, color .3s"
-        height="100%"
         display={props.display}
       >
         {props.text}
@@ -146,20 +152,26 @@ const Header = (props) => {
 
   const borderHandler = (menuToggled) => (menuToggled ? "0px" : "2px")
 
+  const steamIconColor = useColorModeValue("gray.700", "gray.300");
+  const steamIconHoverColor = useColorModeValue("black", "gray.50");
+
+  const linkedinIconColor = useColorModeValue("blue.500", "blue.300");
+  const linkedinIconHoverColor = useColorModeValue("blue.700", "blue.100");
+
   return (
     <Flex
-      position="sticky"
       flexDirection="row"
       justifyContent="space-between"
       alignItems="stretch"
       minWidth="356px"
       width="auto"
-      minHeight="40px"
+      minHeight="60px"
       top="0"
       fontFamily="Inter"
       zIndex="100"
       backgroundColor={backgroundColor}
-      transition="background .3s"                  
+      transition="background .3s"
+      marginBottom="20px"                  
     >
       {/* Desktop Part */}
 
@@ -169,7 +181,8 @@ const Header = (props) => {
           margin="0 0 0 20px" 
           baseColor={iconBaseColor} 
           hoverColor={iconHoverColor} 
-          activeColor={iconActiveColor}/>                    
+          activeColor={iconActiveColor}
+          size="10px"/>                    
         <HeaderLogo 
           text="YATIYR" 
           baseColor={logoBaseColor}
@@ -184,28 +197,30 @@ const Header = (props) => {
         display={{sm: "none", lmd: "flex", md: "flex", lg: "flex", xl: "flex", "2xl": "flex"}}
         flexDirection="row"
         justifyContent="start"
-        alignItems="stretch"
+        alignItems="center"
         flexShrink="1"
         flexGrow="1"
         backgroundColor={backgroundColor}
-        transition="background .3s, color .3s">
-        <HeaderLink to="/" text="Home" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>          
-        <HeaderLink to="/about" text="About" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
-        <HeaderLink to="/blog" text="Blog" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+        transition="background .3s, color .3s"
+        mx="20px">
+        <HeaderLink fontSize="2xl" to="/" text="Home" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>          
+        <HeaderLink fontSize="2xl" to="/about" text="About" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+        <HeaderLink fontSize="2xl" to="/blog" text="Blog" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
       </Flex>
 
 
       <Flex
         display={{sm: "none", lmd: "flex", md: "flex", lg: "flex", xl: "flex", "2xl": "flex"}}
         flexDirection="row"
-        justifyContent="stretch"
+        justifyContent="center"
         alignItems="center"
+        minWidth="11rem"
         backgroundColor={backgroundColor}
         transition="background .3s, color .3s"        
       >
-        <LinkIconElement padding="0 20px 0 0"to="https://steamcommunity.com/id/yatiyr" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor} icon={FaSteam}/>        
-        <LinkIconElement padding="0 20px 0 0"to="https://github.com/yatiyr/" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor} icon={FaGithub}/>
-        <LinkIconElement padding="0 20px 0 0"to="https://www.linkedin.com/in/eren-dere/" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor} icon={FaLinkedin}/>        
+        <LinkIconElement padding="1rem 1rem 1rem 1rem"to="https://steamcommunity.com/id/yatiyr" baseColor={steamIconColor} hoverColor={steamIconHoverColor} activeColor={steamIconColor} icon={FaSteam}/>        
+        <LinkIconElement padding="1rem 1rem 1rem 1rem"to="https://www.linkedin.com/in/eren-dere/" baseColor={linkedinIconColor} hoverColor={linkedinIconHoverColor} activeColor={linkedinIconColor} icon={FaLinkedin}/>                
+        <LinkIconElement padding="1rem 1rem 1rem 1rem"to="https://github.com/yatiyr/" baseColor={steamIconColor} hoverColor={steamIconHoverColor} activeColor={steamIconColor} icon={FaGithub}/>
         { !props.loading && 
           <>
             { props.user && 
@@ -225,7 +240,7 @@ const Header = (props) => {
         flexGrow="1"
         justifyContent="start"
         display={{sm: "flex", lmd: "none", md: "none", lg: "none", xl: "none", "2xl": "none"}}
-        height={menuToggled ? "200px" : "40px"}        
+        height={menuToggled ? "100vh" : "60px"}        
         backgroundColor={backgroundColor}
         transition="height 0.5s, background .3s, color .3s">
         <Flex 
@@ -242,7 +257,8 @@ const Header = (props) => {
               hoverColor={iconHoverColor} 
               activeColor={iconActiveColor}/>             
             <HeaderLogo 
-              text="YATIYR" 
+              text="YATIYR"
+              margin="0 0 0 20px"               
               baseColor={logoBaseColor}
               hoverColor={logoHoverColor}
               activeColor={logoActiveColor}
@@ -253,7 +269,7 @@ const Header = (props) => {
 
           <Flex
             flexDirection="row"
-            height="40px"
+            height="100%"
             alignItems="center"
             mx="10px">
             <HeaderMenuIcon
@@ -268,13 +284,13 @@ const Header = (props) => {
 
         <Flex
           flexDirection="column"
-          justifyContent="start"
+          justifyContent="space-around"
           overflow="hidden"
           height="100%"
           >
-            <HeaderLink to="/" text="Home" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>            
-            <HeaderLink to="/about" text="About" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
-            <HeaderLink to="/blog" text="Blog" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+            <HeaderLink fontSize="4xl" width="100%" height="100%" to="/" text="Home" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>            
+            <HeaderLink fontSize="4xl" width="100%" height="100%" to="/about" text="About" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+            <HeaderLink fontSize="4xl" width="100%" height="100%" to="/blog" text="Blog" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
 
             { !props.loading && 
               <>
@@ -303,10 +319,11 @@ const Header = (props) => {
             <Flex
               flexDirection="row"
               justifyContent="center"
-              flexGrow="1">
-              <LinkIconElement padding="0 0 0 0"to="https://steamcommunity.com/id/yatiyr" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor} icon={FaSteam}/>        
-              <LinkIconElement padding="0 20px 0 20px"to="https://github.com/yatiyr/" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor} icon={FaGithub}/>
-              <LinkIconElement padding="0 0 0 0"to="https://www.linkedin.com/in/eren-dere/" baseColor={iconBaseColor} hoverColor={iconHoverColor} activeColor={iconActiveColor} icon={FaLinkedin}/>
+              height="50%"
+              >
+              <LinkIconElement padding="2rem 2rem 2rem 2rem"to="https://steamcommunity.com/id/yatiyr" baseColor={steamIconColor} hoverColor={steamIconHoverColor} activeColor={steamIconColor} icon={FaSteam}/>        
+              <LinkIconElement padding="2rem 2rem 2rem 2rem"to="https://www.linkedin.com/in/eren-dere/" baseColor={linkedinIconColor} hoverColor={linkedinIconHoverColor} activeColor={linkedinIconColor} icon={FaLinkedin}/>                
+              <LinkIconElement padding="2rem 2rem 2rem 2rem"to="https://github.com/yatiyr/" baseColor={steamIconColor} hoverColor={steamIconHoverColor} activeColor={steamIconColor} icon={FaGithub}/>
             </Flex>            
         </Flex>     
 
