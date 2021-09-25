@@ -1,4 +1,4 @@
-import { Badge, Box, Flex, Heading, Icon, Image, useColorModeValue } from "@chakra-ui/react";
+import { Badge, Box, Flex, Heading, Icon, Text, useColorModeValue } from "@chakra-ui/react";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 
@@ -53,7 +53,7 @@ const ProjectInfoBox = (props) => {
                         className="truncated"
                         color={props.paragraphColor}
                         transition="background .3s, color .3s">
-                        {props.description}
+                        <Text>{props.description}</Text>
                     </Box>
                     <Flex flexDir="row"
                         width="100%"

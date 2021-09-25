@@ -24,6 +24,7 @@ module.exports = withMDX({
 
 
   env: {
-    AUTH0_NAMESPACE: process.env.AUTH0_NAMESPACE
+    AUTH0_NAMESPACE: process.env.AUTH0_NAMESPACE,
+    PORTFOLIO_API_URL: process.env.PORTFOLIO_API_URL
   }
 })

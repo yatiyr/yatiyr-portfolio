@@ -1,11 +1,7 @@
 import BaseLayout from 'components/layouts/BaseLayout';
 import { useGetUser } from "actions/user";
 import { Heading, useColorModeValue, Flex } from "@chakra-ui/react";
-import { MDXRemote } from 'next-mdx-remote';
-
-import MDXComponents from 'components/mdx';
 import { getAllFilesFrontMatter } from 'utils/mdx';
-import BlogLayout from 'components/layouts/BlogLayout';
 import BlogInfoBox from 'components/ui/BlogInfoBox';
 import { Box } from '@chakra-ui/react';
 

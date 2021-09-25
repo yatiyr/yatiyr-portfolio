@@ -31,7 +31,7 @@ const FrontMatter = ({ matter }) => {
                     {matter.readingTime.text}
                 </Box>
             </Box>
-            <Image alt="headImage" src={matter.headImageUrl} width={1501 / 2} height={712 / 2} priority />
+            <Image objectFit="cover" alt="headImage" src={`${process.env.PORTFOLIO_API_URL}/media/${matter.headImageUrl}`} width="100%" height={712 / 2} priority />
         </Box>
     );
 };

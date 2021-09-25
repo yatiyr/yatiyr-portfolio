@@ -1,4 +1,4 @@
-import { Badge, Box, Flex, Heading, Image, useColorModeValue } from "@chakra-ui/react";
+import { Badge, Box, Flex, Heading, Image, useColorModeValue, Text } from "@chakra-ui/react";
 
 import Link from "next/link";
 
@@ -36,7 +36,7 @@ const BlogInfoBox = (props) => {
                     height="200px"
                     width="100%"
                     userSelect="none"
-                    src={props.imagePath}
+                    src={`${process.env.PORTFOLIO_API_URL}/media/${props.imagePath}`}
                     alt="blogInfo"
                     />
                 </Box>
@@ -65,7 +65,7 @@ const BlogInfoBox = (props) => {
                         className="truncated"
                         color={props.paragraphColor}
                         transition="background .3s, color .3s">
-                        {props.description}
+                        <Text>{props.description}</Text>
                     </Box>
                     <Box as="a"
                         href={props.slug}

@@ -1,4 +1,4 @@
-import { Heading, Link as ChakraLink, useColorModeValue, Text, UnorderedList, OrderedList, Divider, Box} from "@chakra-ui/react";
+import { Heading, Link as ChakraLink, useColorModeValue, Text, UnorderedList, OrderedList, Divider, Box, Flex} from "@chakra-ui/react";
 import Link from 'next/link';
 import { Image } from "@chakra-ui/image";
 
@@ -64,7 +64,7 @@ const H4 = (props) => {
 const P = (props) => {
     const paragraphColor = useColorModeValue("gray.600", "gray.400");  
 
-    return <Text fontFamily="Ubuntu" color={paragraphColor} {...props}/>
+    return <Text text-align="justify" text-justify="inter-word" fontFamily="Ubuntu" color={paragraphColor} {...props}/>
 }
 
 const UL = (props) => {
@@ -91,6 +91,29 @@ const MathEq = (props) => {
     return <Box color={mathEqColor} {...props}/>
 }
 
+const ApiImage = (props) => {
+    const captionColor = useColorModeValue("gray.500", "gray.500");
+
+    return (
+        <Flex flexDirection="column" alignSelf="center">
+            <Image 
+                   alignSelf="center"
+                   objectFit="cover" 
+                   alt={props.alt}
+                   src={`${process.env.PORTFOLIO_API_URL}/media${props.src}`}
+                   width={props.width} height={props.height}                   
+                   flexGrow="1"/>
+            <Text flexGrow="1"
+                  textAlign="center" 
+                  fontFamily="UbuntuMono"
+                  fontSize="14px"
+                  color={captionColor}>
+                      {props.caption}
+            </Text>
+        </Flex>
+    )
+}
+
 const components = {
     a: CustomLink,
     h1: H1,
@@ -102,7 +125,8 @@ const components = {
     ol: OL,
     hr: HR,
     div: MathEq,
-    Image
+    ApiImage,
+    Image,
 };
 
 export default components;

@@ -79,7 +79,8 @@ const IndexMain = (props) => {
                 headingColor={headingColor}
                 paragraphColor={paragraphColor}
                 linkHoverColor={linkHoverColor}
-                imageBackgroundColor={imageBackgroundColor}/>    
+                imageBackgroundColor={imageBackgroundColor}
+                highlightedBlogs={props.highlightedBlogs}/>    
         </>
     )
 

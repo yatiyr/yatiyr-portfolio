@@ -28,7 +28,7 @@ const BlogLayout = (props) => {
                 px={['1rem', '1rem', '1rem', '1rem']}
                 py={['0.5rem', '1rem', '2rem', '2rem']}
                 my="2rem"
-                width={{sm: "95%", lmd: "95%", md: "70%", lg: "57%", xl: "750px", "2xl": "750px"}}
+                width={{sm: "95%", lmd: "95%", md: "70%", lg: "60%", xl: "800px", "2xl": "800px"}}
                 display="flex"
                 flexDirection="column">
                 <FrontMatter matter={frontMatter} />

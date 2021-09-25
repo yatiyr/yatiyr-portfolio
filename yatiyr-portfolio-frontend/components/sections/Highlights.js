@@ -5,8 +5,6 @@ import {projects} from "data/projects";
 
 const Highlights = (props) => {
 
-
-
     return(
         <Flex
         justifyContent="start"
@@ -44,28 +42,24 @@ const Highlights = (props) => {
                 my={{sm: "0px", lmd: "0px", md: "0px", lg: "0px", xl: "0px", "2xl": "0px"}}
                 fontSize={{sm: "lg", lmd: "xl", md: "2xl", lg: "3xl", xl: "3xl", "2xl": "3xl"}}
                 color={props.headingColor}>Highlighted Blogs</Heading>
-            <BlogInfoBox 
-                imagePath="/images/veachAjarPathTraced.png"
-                title="Ray Tracer Journey"
-                date="02/07/2021"
-                description="Nulla esse voluptate esse esse. Ipsum anim esse quis dolor proident. Eiusmod est reprehenderit magna deserunt exercitation reprehenderit et ipsum ea duis ullamco in nostrud occaecat. Incididunt ea ipsum id aute ut in ipsum ea tempor id nisi. In Lorem adipisicing consequat aliqua qui tempor minim in consectetur non quis dolore voluptate. Laborum pariatur duis velit reprehenderit eiusmod dolor. Anim nisi laboris anim officia adipisicing exercitation veniam id."
-                owner="erendere"
-                slug="#"
-                blogId="#"
-                headingColor={props.headingColor}
-                paragraphColor={props.paragraphColor}
-                linkHoverColor={props.linkHoverColor}
-                imageBackgroundColor={props.imageBackgroundColor}/>
+
+                 {props.highlightedBlogs.map((blog, index) => (
+                            <BlogInfoBox
+                                key={index}
+                                imagePath={blog.headImageUrl}
+                                title={blog.title}
+                                date={blog.publishedAt}
+                                description={blog.summary}
+                                owner="erendere"
+                                slug={blog.slug}
+                                headingColor={props.headingColor}
+                                paragraphColor={props.paragraphColor}
+                                linkHoverColor={props.linkHoverColor}
+                                imageBackgroundColor={props.imageBackgroundColor}/>
+                ))}             
         </Flex>
     )
 
 }
-
-
-export async function getStaticProps({ params }) {
-    const cont = await getFileBySlug('blog', 'hydrate-redux-state-in-nextjs');
-  
-    return {props: {...cont } };
-  }
 
 export default Highlights;

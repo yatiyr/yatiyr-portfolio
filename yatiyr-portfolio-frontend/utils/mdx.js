@@ -76,6 +76,34 @@ export async function getAllFilesFrontMatter(type) {
       }, []);    
 }
 
+export async function getAllHighlightsFrontMatter(type) {
+  const files = fs.readdirSync(path.join(root, 'data', type));
+
+  return files.reduce((allPosts, postSlug) => {
+      const source = fs.readFileSync(path.join(root, 'data', type, postSlug), 'utf8');
+      const { data, content } = matter(source);
+  
+      if(data.highlighted === 'true') {
+        return [
+          {
+            ...data,
+            slug: postSlug.replace('.mdx', ''),
+            frontMatter: {
+              wordCount: content.split(/\s+/gu).length,
+              readingTime: readingTime(content)
+            }
+          },
+          ...allPosts
+        ];
+      } else {
+        return [
+          ...allPosts
+        ]
+      }
+
+    }, []);    
+}
+
 export async function parseMDXString(source) {
 
     const { data, content } = matter(source);
