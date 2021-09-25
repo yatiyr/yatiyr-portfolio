@@ -5,7 +5,7 @@ import { HamburgerIcon, CloseIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import DarkModeSwitch from 'components/ui/DarkModeSwitch';
 import IconElement from 'components/ui/IconElement';
 import LinkIconElement from 'components/ui/LinkIconElement';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaGithub, FaLinkedin, FaSteam } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { VscChromeClose } from 'react-icons/vsc';
@@ -158,6 +158,25 @@ const Header = (props) => {
   const linkedinIconColor = useColorModeValue("blue.500", "blue.300");
   const linkedinIconHoverColor = useColorModeValue("blue.700", "blue.100");
 
+  const [showHeader, setShowHeader] = useState(true);
+  const controllHeader = () => {
+
+    if(window.scrollY > 100) {
+      setShowHeader(false);
+    }
+    else {
+      setShowHeader(true);
+    }
+  }
+
+  useEffect(() => {
+
+    window.addEventListener('scroll', controllHeader);
+    return () => {
+      window.removeEventListener('scroll', controllHeader);
+    }
+  }, [])
+
   return (
     <Flex
       flexDirection="row"
@@ -240,7 +259,7 @@ const Header = (props) => {
         flexGrow="1"
         justifyContent="start"
         display={{sm: "flex", lmd: "none", md: "none", lg: "none", xl: "none", "2xl": "none"}}
-        height={menuToggled ? "100vh" : "60px"}        
+        height={menuToggled ? "90vh" : "60px"}        
         backgroundColor={backgroundColor}
         transition="height 0.5s, background .3s, color .3s">
         <Flex 
