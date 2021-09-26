@@ -15,6 +15,11 @@ const DarkModeSwitch = (props) => {
       baseColor={props.baseColor}
       hoverColor={props.hoverColor}
       activeColor={props.activeColor}
+      height={props.height}
+      width={props.width}
+      position={props.position}
+      opacity={props.opacity}
+      visibility={props.visibility}
     />
   );
 }

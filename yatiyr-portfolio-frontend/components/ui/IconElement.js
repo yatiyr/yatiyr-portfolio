@@ -5,13 +5,17 @@ const IconElement = (props) => {
  
   return(
     <Box 
+      position={props.position}
       margin={props.margin}
       display={props.display}
       justifyContent="center"
-      transition="background .3s"
-      height="100%"
-      width="100%"
-      padding="0px 0px">
+      transition="background .3s, opacity .5s"
+      height={props.height ? props.height : "100%"}
+      width={props.width ? props.width : "100%"}
+      padding="0px 0px"
+      zIndex="10"
+      opacity={props.opacity ? props.opacity : "1"}
+      visibility={props.visibility ? props.visibility : "visible"}>
       <Icon
           padding="1rem 1rem"
           height="90%"
@@ -24,7 +28,8 @@ const IconElement = (props) => {
           _hover={{color: props.hoverColor}}
           _active={{color: props.activeColor}}
           as={props.icon}
-          transition="color .3s"/>
+          opacity={props.opacity ? props.opacity : "1"}          
+          transition="color .3s, opacity .5s"/>
     </Box>
   );
 }

@@ -140,9 +140,9 @@ const Header = (props) => {
   const logoHoverColor  = useColorModeValue("purple.700", "purple.200");
   const logoActiveColor = useColorModeValue("purple.800", "purple.100");
 
-  const iconBaseColor   = useColorModeValue("gray.600","gray.500");
-  const iconHoverColor  = useColorModeValue("gray.700", "gray.400");
-  const iconActiveColor = useColorModeValue("gray.800", "gray.300");
+  const iconBaseColor   = useColorModeValue("gray.900","gray.50");
+  const iconHoverColor  = useColorModeValue("black", "white");
+  const iconActiveColor = useColorModeValue("black", "white");
 
   const headerLinkBaseColor = useColorModeValue("gray.600", "gray.400");
   const headerLinkHoverColor = useColorModeValue("gray.800", "gray.100");
@@ -161,7 +161,7 @@ const Header = (props) => {
   const [showHeader, setShowHeader] = useState(true);
   const controllHeader = () => {
 
-    if(window.scrollY > 100) {
+    if(window.scrollY > 200) {
       setShowHeader(false);
     }
     else {
@@ -178,6 +178,7 @@ const Header = (props) => {
   }, [])
 
   return (
+    <>     
     <Flex
       flexDirection="row"
       justifyContent="space-between"
@@ -190,7 +191,7 @@ const Header = (props) => {
       zIndex="100"
       backgroundColor={backgroundColor}
       transition="background .3s"
-      marginBottom="20px"                  
+      marginBottom="20px"                
     >
       {/* Desktop Part */}
 
@@ -200,8 +201,7 @@ const Header = (props) => {
           margin="0 0 0 20px" 
           baseColor={iconBaseColor} 
           hoverColor={iconHoverColor} 
-          activeColor={iconActiveColor}
-          size="5px"/>                    
+          activeColor={iconActiveColor} />                    
         <HeaderLogo 
           text="YATIYR" 
           baseColor={logoBaseColor}
@@ -349,6 +349,7 @@ const Header = (props) => {
       </Flex>
 
     </Flex>
+    </>
   )
 }
 

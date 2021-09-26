@@ -1,11 +1,34 @@
 import Head from "next/head";
-import { Box } from "@chakra-ui/layout";
+import { Box, useColorModeValue } from "@chakra-ui/react";
 import Header from "components/sections/Header";
 import FrontMatter from 'components/sections/FrontMatter'
 import Footer from "components/sections/Footer";
-
+import { useState, useEffect } from "react";
+import DarkModeSwitch from "components/ui/DarkModeSwitch";
 
 const BlogLayout = (props) => {
+
+    const iconBaseColor   = useColorModeValue("gray.900","gray.50");
+    const iconHoverColor  = useColorModeValue("black", "white");
+    const iconActiveColor = useColorModeValue("black", "white");
+    const [showHeader, setShowHeader] = useState(true);
+    const controllHeader = () => {
+  
+      if(window.scrollY > 200) {
+        setShowHeader(false);
+      }
+      else {
+        setShowHeader(true);
+      }
+    }
+  
+    useEffect(() => {
+  
+      window.addEventListener('scroll', controllHeader);
+      return () => {
+        window.removeEventListener('scroll', controllHeader);
+      }
+    }, [])    
 
     const { user, loading, children, frontMatter, backgroundColor } = props;
     
@@ -22,6 +45,15 @@ const BlogLayout = (props) => {
                 />
             </Head>        
             <Box className="mdx" backgroundColor={backgroundColor}>
+                <DarkModeSwitch 
+                    opacity={showHeader ? '0' : '1'}
+                    margin="0 0 0 20px" 
+                    baseColor={iconBaseColor} 
+                    hoverColor={iconHoverColor} 
+                    activeColor={iconActiveColor}
+                    position="fixed"
+                    width="4rem"
+                    height="4rem"/>                  
                 <Header user={user} loading={loading} />
                 <Box
                 mx="auto"
