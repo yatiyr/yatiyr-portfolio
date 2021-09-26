@@ -14,8 +14,8 @@ const IconElement = (props) => {
       padding="0px 0px">
       <Icon
           padding="1rem 1rem"
-          height="100%"
-          width="100%"
+          height="90%"
+          width="90%"
           alignSelf="center"
           justifySelf="center"
           onClick={props.onClickHandler}

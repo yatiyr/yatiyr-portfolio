@@ -201,7 +201,7 @@ const Header = (props) => {
           baseColor={iconBaseColor} 
           hoverColor={iconHoverColor} 
           activeColor={iconActiveColor}
-          size="10px"/>                    
+          size="5px"/>                    
         <HeaderLogo 
           text="YATIYR" 
           baseColor={logoBaseColor}

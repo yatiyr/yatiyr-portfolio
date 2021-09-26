@@ -1,4 +1,8 @@
-import { Heading, Link as ChakraLink, useColorModeValue, Text, UnorderedList, OrderedList, Divider, Box, Flex} from "@chakra-ui/react";
+import { Heading, Link as ChakraLink, 
+         useColorModeValue, Text,
+         UnorderedList, OrderedList,
+         Divider, Box, Flex, Table,
+         TableCaption, Thead, Tr, Th, Tfoot, Tbody, Td } from "@chakra-ui/react";
 import Link from 'next/link';
 import { Image } from "@chakra-ui/image";
 
@@ -91,6 +95,12 @@ const MathEq = (props) => {
     return <Box color={mathEqColor} {...props}/>
 }
 
+const CustomTable = (props) => {
+    const TableColor = useColorModeValue("gray.600", "gray.400");
+
+    return <Table color={TableColor} {...props} />
+}
+
 const ApiImage = (props) => {
     const captionColor = useColorModeValue("gray.500", "gray.500");
 
@@ -126,7 +136,15 @@ const components = {
     hr: HR,
     div: MathEq,
     ApiImage,
+    CustomTable, 
+    Tbody,
+    Td,   
     Image,
+    TableCaption,
+    Thead,
+    Tr,
+    Th,
+    Tfoot     
 };
 
 export default components;
