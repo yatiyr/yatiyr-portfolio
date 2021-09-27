@@ -14,8 +14,10 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-jwt": "^6.1.0",
+    "gray-matter": "^4.0.3",
     "jwks-rsa": "^2.0.4",
     "mongoose": "^6.0.2",
+    "reading-time": "^1.5.0",
     "slugify": "^1.6.0",
     "unique-slug": "^2.0.2"
   },
