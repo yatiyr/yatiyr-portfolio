@@ -18,24 +18,12 @@ class BaseApi {
         return axios.get(this.apiUrl);
     }
 
-    update(id, data) {
-        return axios.patch(`${this.apiUrl}/${id}`, data, this.config);
-    }
-
-    getByUser() {
-        return axios.get(`${this.apiUrl}/me`, this.config);
-    }
-
     getById(id) {
         return axios.get(`${this.apiUrl}/${id}`);
     }
 
     getBySlug(slug) {
         return axios.get(`${this.apiUrl}/s/${slug}`);
-    }
-
-    create(data) {
-        return axios.post(this.apiUrl, data, this.config);
     }
 
 };

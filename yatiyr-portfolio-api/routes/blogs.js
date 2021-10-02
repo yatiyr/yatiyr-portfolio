@@ -7,7 +7,7 @@ const { getBlogs,
 
 router.get('', getBlogs);
 router.get('/highlighted', getHighlightedBlogs);
-router.get('/slug/:slug', getBlogBySlug);
-router.get('/type/:type', getBlogsByPostType);
+router.get('/s/:slug', getBlogBySlug);
+router.get('/t/:type', getBlogsByPostType);
 
 module.exports = router;

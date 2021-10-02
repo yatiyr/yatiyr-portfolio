@@ -2,7 +2,7 @@ import BaseLayout from 'components/layouts/BaseLayout';
 import IndexMain from 'components/sections/IndexMain';
 import { useGetUser } from "actions/user";
 import { useColorModeValue } from "@chakra-ui/react";
-import { getAllHighlightsFrontMatter } from 'utils/mdx';
+import BlogApi from 'lib/api/blogs';
 
 const Home = (props) => {
 
@@ -24,9 +24,13 @@ const Home = (props) => {
 }
 
 export async function getStaticProps() {
-  const blogs = await getAllHighlightsFrontMatter('blog');
+  const json = await new BlogApi().getHighlighted();
 
-  return {props: {blogs}};
+  return {
+    props: {blogs: json.data},
+    revalidate: 60
+  };
+  
 }
 
 export default Home;

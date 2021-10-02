@@ -1,10 +1,11 @@
 import { MDXRemote } from "next-mdx-remote";
-import { getFileBySlug, getFiles } from "utils/mdx";
+import { getFileBySlug } from "utils/mdx";
 
 import MDXComponents from 'components/mdx';
 import BlogLayout from "components/layouts/BlogLayout";
 import { useGetUser } from "actions/user";
 import { useColorModeValue } from "@chakra-ui/react";
+import BlogApi from "lib/api/blogs";
 
 const BlogContent = (props) => {
     const { data, loading } = useGetUser();
@@ -25,12 +26,13 @@ const BlogContent = (props) => {
 }
 
 export async function getStaticPaths() {
-    const blogs = await getFiles('blog');
+    const json = await new BlogApi().getAll();
+    const blogs = json.data;
 
     return {
         paths: blogs.map((p) => ({
             params: {
-                slug: p.replace(/\.mdx/, '')
+                slug: p.slug
             }
         })),
         fallback: false

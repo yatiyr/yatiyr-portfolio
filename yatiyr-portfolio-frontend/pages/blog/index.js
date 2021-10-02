@@ -1,9 +1,10 @@
 import BaseLayout from 'components/layouts/BaseLayout';
 import { useGetUser } from "actions/user";
 import { Heading, useColorModeValue, Flex } from "@chakra-ui/react";
-import { getAllFilesFrontMatter } from 'utils/mdx';
 import BlogInfoBox from 'components/ui/BlogInfoBox';
 import { Box } from '@chakra-ui/react';
+import BlogApi from 'lib/api/blogs';
+import dateFormat from 'dateformat';
 
 const Blog = (props) => {
   // Load user information
@@ -33,7 +34,7 @@ const Blog = (props) => {
                 key={index}
                 imagePath={blog.headImageUrl}
                 title={blog.title}
-                date={blog.publishedAt}
+                date={dateFormat(blog.publishedAt, "dddd, mmm dS, yyyy")}
                 description={blog.summary}
                 owner="erendere"
                 slug={blog.slug}
@@ -46,32 +47,17 @@ const Blog = (props) => {
       </BaseLayout>
   )
 
-  /*
-  return (
-    <>
-      <BlogLayout
-        user={data}
-        loading={loading}
-        backgroundColor={backgroundColor}
-        frontMatter={props.frontMatter}>
-          <MDXRemote {...props.mdxSource} components={{...MDXComponents}} />                                                                                                          
-      </BlogLayout>
-    </>
-  ) */
-
 }
 
 export async function getStaticProps() {
-  const blogs = await getAllFilesFrontMatter('blog');
+  //const blogs = await getAllFilesFrontMatter('blog');
+  const json = await new BlogApi().getAll();
 
-  return {props: {blogs}};
+  return {
+    props: {blogs: json.data},
+    revalidate: 60
+  };
+
 }
-
-/*
-export async function getStaticProps({ params }) {
-  const cont = await getFileBySlug('blog', 'hydrate-redux-state-in-nextjs');
-
-  return {props: {...cont } };
-} */
 
 export default Blog;

@@ -11,6 +11,7 @@ import remarkCodeTitles from "remark-code-titles";
 
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import BlogApi from 'lib/api/blogs';
 
 const root = process.cwd();
 
@@ -19,13 +20,11 @@ export async function getFiles(type) {
 }
 
 export async function getFileBySlug(type, slug) {
-    const source = slug
-    ? fs.readFileSync(path.join(root, 'data', type, `${slug}.mdx`), 'utf8')
-    : fs.readFileSync(path.join(root, 'data', `${type}.mdx`), 'utf8');    
 
-    const { data, content } = matter(source);
-
-    const mdxSource = await serialize(content, {
+    const json = await new BlogApi().getBySlug(slug);
+    const data = json.data;
+    
+    const mdxSource = await serialize(data.content, {
         mdxOptions: {
           remarkPlugins: [
             remarkSlug,
@@ -47,10 +46,14 @@ export async function getFileBySlug(type, slug) {
       return {
         mdxSource,
         frontMatter: {
-          wordCount: content.split(/\s+/gu).length,
-          readingTime: readingTime(content),
-          slug: slug || null,
-          ...data
+          headImageUrl: data.headImageUrl,
+          highlighted: data.highlighted,
+          publishedAt: data.publishedAt,
+          summary: data.summary,
+          title: data.title,          
+          wordCount: data.content.split(/\s+/gu).length,
+          readingTime: readingTime(data.content),
+          slug: slug || null
         }
       };    
 }

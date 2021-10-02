@@ -60,8 +60,8 @@ const ProjectInfoBox = (props) => {
                         height="16px"
                         justifyContent="space-between">
                             <Flex>
-                                <Badge colorScheme="blue">{props.owner}</Badge>
-                                <Badge marginLeft="20px" colorScheme="purple">{props.language}</Badge>
+                                <Badge fontWeight="thin" textTransform="none" colorScheme="blue">{props.owner}</Badge>
+                                <Badge fontWeight="thin" textTransform="none" marginLeft="20px" colorScheme="purple">{props.language}</Badge>
                             </Flex>
                             <Icon color={githubIconColor} as={FaGithub}></Icon>
                     </Flex>                     

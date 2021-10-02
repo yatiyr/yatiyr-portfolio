@@ -3,6 +3,7 @@ import Footer from 'components/sections/Footer';
 import Header from 'components/sections/Header';
 import DarkModeSwitch from 'components/ui/DarkModeSwitch';
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
 
 const BaseLayout = (props) => {
 
@@ -31,6 +32,10 @@ const BaseLayout = (props) => {
 
   return (
     <>
+        <Head>
+          <title>Eren&apos;s Portfolio</title>
+          <meta property="og:image" content=""/>                   
+        </Head>      
         <DarkModeSwitch 
           opacity={showHeader ? '0' : '1'}
           margin="0 0 0 20px" 

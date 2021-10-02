@@ -2,6 +2,7 @@ import { Flex, Heading, SimpleGrid, Box } from "@chakra-ui/react";
 import BlogInfoBox from "components/ui/BlogInfoBox";
 import ProjectInfoBox from "components/ui/ProjectInfoBox";
 import {projects} from "data/projects";
+import dateFormat from "dateformat";
 
 const Highlights = (props) => {
 
@@ -54,7 +55,7 @@ const Highlights = (props) => {
                                 key={index}
                                 imagePath={blog.headImageUrl}
                                 title={blog.title}
-                                date={blog.publishedAt}
+                                date={dateFormat(blog.publishedAt, "dddd, mmm dS, yyyy")}
                                 description={blog.summary}
                                 owner="erendere"
                                 slug={blog.slug}

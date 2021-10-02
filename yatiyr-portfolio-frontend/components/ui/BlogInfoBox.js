@@ -80,8 +80,8 @@ const BlogInfoBox = (props) => {
                         width="100%"
                         height="16px"
                         justifyContent="start">
-                        <Badge colorScheme="blue">by {props.owner}</Badge>
-                        <Badge marginLeft="20px" colorScheme="purple">{props.date}</Badge>
+                        <Badge fontWeight="thin" fontFamily="Inter" textTransform="none" colorScheme="blue">by {props.owner}</Badge>
+                        <Badge fontWeight="thin" textTransform="none" marginLeft="20px" colorScheme="purple">{props.date}</Badge>
                     </Flex>                     
                 </Flex>
             </Flex>

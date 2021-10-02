@@ -6,6 +6,7 @@ export default class MyDocument extends NextDocument {
     return (
       <Html lang="en">
         <Head />
+          <link rel="icon" type="image/jpeg" href="/images/erenAvatar1.jpeg" />        
           <body>
             <ColorModeScript />
             <Main />
