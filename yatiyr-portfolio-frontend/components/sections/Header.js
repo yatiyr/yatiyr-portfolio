@@ -188,7 +188,7 @@ const Header = (props) => {
       <Box display="flex" flexDirection="row">
         <DarkModeSwitch 
           height="4rem"
-          display={{sm: "none", lmd: "flex", md: "flex", lg: "flex", xl: "flex", "2xl": "flex"}}
+          display={{sm: "none", slmd: "flex", lmd: "flex", md: "flex", lg: "flex", xl: "flex", "2xl": "flex"}}
           margin="0 0 0 20px" 
           baseColor={iconBaseColor} 
           hoverColor={iconHoverColor} 
@@ -204,7 +204,7 @@ const Header = (props) => {
       </Box>
 
       <Flex
-        display={{sm: "none", lmd: "flex", md: "flex", lg: "flex", xl: "flex", "2xl": "flex"}}
+        display={{sm: "none", slmd: "flex", lmd: "flex", md: "flex", lg: "flex", xl: "flex", "2xl": "flex"}}
         flexDirection="row"
         justifyContent="start"
         alignItems="center"
@@ -220,11 +220,11 @@ const Header = (props) => {
 
 
       <Flex
-        display={{sm: "none", lmd: "flex", md: "flex", lg: "flex", xl: "flex", "2xl": "flex"}}
+        display={{sm: "none", slmd: "flex", lmd: "flex", md: "flex", lg: "flex", xl: "flex", "2xl": "flex"}}
         flexDirection="row"
         justifyContent="center"
         alignItems="center"
-        minWidth="11rem"
+        minWidth="9rem"
         backgroundColor={backgroundColor}
         transition="background .3s, color .3s"        
       >
@@ -249,7 +249,7 @@ const Header = (props) => {
         flexDirection="column"
         flexGrow="1"
         justifyContent="start"
-        display={{sm: "flex", lmd: "none", md: "none", lg: "none", xl: "none", "2xl": "none"}}
+        display={{sm: "flex", slmd: "none", lmd: "none", md: "none", lg: "none", xl: "none", "2xl": "none"}}
         height={menuToggled ? "90vh" : "60px"}        
         backgroundColor={backgroundColor}
         transition="height 0.5s, background .3s, color .3s">
