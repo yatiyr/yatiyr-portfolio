@@ -58,150 +58,129 @@ const prismBaseTheme = css`
     border-radius: ${theme.radii.md};
   }
 
-  code[class*="language-"],
-  pre[class*="language-"] {
-    color: #f8f8f2;
-    background: none;
-    font-family: "Fira Code", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    text-align: left;
+  code[class*='language-'],
+  pre[class*='language-'] {
+    color: #d6e7ff;
+    background: #030314;
+    text-shadow: none;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    font-size: 1em;
+    line-height: 1.5;
+    letter-spacing: .2px;
     white-space: pre;
     word-spacing: normal;
     word-break: normal;
     word-wrap: normal;
-    line-height: 1.5;
+    text-align: left;
+  
     -moz-tab-size: 4;
     -o-tab-size: 4;
     tab-size: 4;
+  
     -webkit-hyphens: none;
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
   }
   
-  /* Code blocks */
-  pre[class*="language-"] {
-    padding: 1em;
-    margin: .5em 0;
+  pre[class*='language-']::-moz-selection,
+  pre[class*='language-'] ::-moz-selection,
+  code[class*='language-']::-moz-selection,
+  code[class*='language-'] ::-moz-selection,
+  pre[class*='language-']::selection,
+  pre[class*='language-'] ::selection,
+  code[class*='language-']::selection,
+  code[class*='language-'] ::selection {
+    color: inherit;
+    background: #1d3b54;
+    text-shadow: none;
+  }
+  
+  pre[class*='language-'] {
+    border: 1px solid #2a4555;
+    border-radius: 5px;
+    padding: 1.5em 1em;
+    margin: 1em 0;
     overflow: auto;
-    border-radius: 0;
   }
   
-  :not(pre) > code[class*="language-"],
-  pre[class*="language-"] {
-    background: #2E3440;
-  }
-  
-  /* Inline code */
-  :not(pre) > code[class*="language-"] {
-    padding: .1em;
-    border-radius: .3em;
-    white-space: normal;
+  :not(pre) > code[class*='language-'] {
+    color: #f0f6f6;
+    background: #2a4555;
+    padding: 0.2em 0.3em;
+    border-radius: 0.2em;
+    box-decoration-break: clone;
   }
   
   .token.comment,
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: #636f88;
+    color: #446e69;
   }
   
   .token.punctuation {
-    color: #81A1C1;
-  }
-  
-  .namespace {
-    opacity: .7;
+    color: #d0ff00;
   }
   
   .token.property,
   .token.tag,
+  .token.boolean,
   .token.constant,
   .token.symbol,
   .token.deleted {
-    color: #81A1C1;
+    color: #d6e7ff;
   }
-  
+
   .token.number {
-    color: #B48EAD;
-  }
-  
-  .token.boolean {
-    color: #81A1C1;
+    color: #00ff1e
   }
   
   .token.selector,
   .token.attr-name,
-  .token.string,
-  .token.char,
   .token.builtin,
   .token.inserted {
-    color: #A3BE8C;
+    color: #e60067;
   }
   
-  .token.operator,
+  .token.string,
+  .token.char {
+    color: #49c6ec;
+  }
+  
   .token.entity,
   .token.url,
   .language-css .token.string,
-  .style .token.string,
-  .token.variable {
-    color: #81A1C1;
+  .style .token.string {
+    color: #ec8e01;
+    background: transparent;
+  }
+
+  .token.operator {
+    color: #ff00ff;
   }
   
   .token.atrule,
-  .token.attr-value,
-  .token.function,
-  .token.class-name {
-    color: #88C0D0;
+  .token.attr-value {
+    color: #0fe468;
+  }
+
+  .token.keyword {
+    color: #bc92ff;
   }
   
-  .token.keyword {
-    color: #81A1C1;
+  .token.class-name {
+    color: #ff3c91;
+  }
+
+  .token.function {
+    color : #9efff5;
   }
   
   .token.regex,
-  .token.important {
-    color: #EBCB8B;
-  }
-  
   .token.important,
-  .token.bold {
-    font-weight: bold;
-  }
-  
-  .token.italic {
-    font-style: italic;
-  }
-  
-  .token.entity {
-    cursor: help;
-  }
-
-  .mdx-marker {
-    display: block;
-    margin-left: -${theme.space[4]};
-    margin-right: -${theme.space[4]};
-    padding-left: ${theme.space[4]};
-    padding-right: ${theme.space[4]};
-    background-color: ${theme.colors.gray[200]};
-    box-shadow: inset 3px 0px 0 0px ${theme.colors.blue[600]};
-    min-width: fit-content;
-  }
-
-  .remark-code-title {
-    padding: ${theme.space[2]} ${theme.space[4]};
-    font-family: ${theme.fonts.mono};
-    background: ${theme.colors.gray[50]};
-    color: ${theme.colors.gray[800]} !important;
-    border: 1px solid ${theme.colors.gray[300]};
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-bottom: 0;
-    width: 100%;
-    + pre {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      margin-top: 0;
-    }
+  .token.variable {
+    color: #d6e7ff;
   }
 `;
 
@@ -214,5 +193,6 @@ const PrismTheme = () => (
     <>
       <Global styles={prismDarkTheme}/>
     </>
-  )
-  export default PrismTheme;
+)
+
+export default PrismTheme;

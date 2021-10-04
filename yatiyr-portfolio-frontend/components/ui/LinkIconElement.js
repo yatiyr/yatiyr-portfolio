@@ -11,7 +11,8 @@ const LinkIconElement = (props) => {
             padding={props.padding}
             as="a"
             height="100%"
-            width="100%">
+            width="100%"
+            maxHeight="8rem">
             <Icon
                 cursor="pointer"
                 color={props.baseColor}

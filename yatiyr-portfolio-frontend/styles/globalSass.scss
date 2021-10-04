@@ -27,3 +27,13 @@ p {
   text-justify: inter-word;  
 }
   
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 1px #ffffff64, 0 0 2px #ffffff64, 0 0 3px #7f00e6, 0 0 3px #7f00e6, 0 0 4px #7f00e646, 0 0 5px #7f00e646, 0 0 6px #7f00e646;
+  }
+  
+  to {
+    text-shadow: 0 0 1px #ffffff64, 0 0 2px #a462da, 0 0 3px #a462da, 0 0 4px #a462dad5, 0 0 5px #a462dadc, 0 0 6px #a462da, 0 0 7px #a462dae5;
+  }  
+}

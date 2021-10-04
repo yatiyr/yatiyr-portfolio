@@ -9,7 +9,7 @@ import MDXComponents from 'components/mdx';
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider resetCSS theme={customTheme}>
-      <ColorModeProvider options={{initialColorMode: "light", useSystemColorMode: true}}>
+      <ColorModeProvider options={{initialColorMode: "Dark", useSystemColorMode: true}}>
         <MDXProvider components={MDXComponents}>
           <GlobalStyle>
             <Component {...pageProps}/>

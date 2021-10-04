@@ -1,13 +1,10 @@
-import { Badge, Box, Flex, Heading, Icon, Image, useColorModeValue, Text } from "@chakra-ui/react";
-import { FaGithub } from "react-icons/fa";
-import Link from "next/link";
+import { Flex, Heading, useColorModeValue, Text } from "@chakra-ui/react";
 
 
 const EducationWorkInfoBox = (props) => {
 
     const cardContainerBg = useColorModeValue("white", "gray.900");
-    const cardBorder      = useColorModeValue("none", "1px");
-    const githubIconColor = useColorModeValue("gray.900", "gray.50");
+    const cardBorder      = useColorModeValue("none", "none");
 
     return (
         <Flex 

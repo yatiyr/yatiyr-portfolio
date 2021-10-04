@@ -8,7 +8,7 @@ import { Image } from "@chakra-ui/image";
 
 const CustomLink = (props) => {
 
-    const linkColor = useColorModeValue("cyan.700", "cyan.300");
+    const linkColor = useColorModeValue("purple.600", "gray.100");
 
     const href = props.href;
     const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
@@ -16,7 +16,7 @@ const CustomLink = (props) => {
     if(isInternalLink) {
         return (
             <Link href={href} passHref>
-                <ChakraLink color={linkColor} {...props} fontWeight="bold" className="mdx">
+                <ChakraLink color={linkColor} {...props} fontWeight="bold" className="mdx" animation={linkColor === "gray.100" ? "glow 1s ease-in-out infinite alternate" : ""}>
                     {props.children}
                 </ChakraLink>
             </Link>
@@ -29,6 +29,7 @@ const CustomLink = (props) => {
             rel="noopener noreferrer"
             color={linkColor}
             className="mdx"
+            animation={linkColor === "gray.100" ? "glow 1s ease-in-out infinite alternate" : ""}            
             fontWeight="bold"
             {...props}
         >
@@ -39,46 +40,46 @@ const CustomLink = (props) => {
 
 const H1 = (props) => {
 
-    const headingColor = useColorModeValue("gray.800", "gray.300");    
+    const headingColor = useColorModeValue("gray.800", "gray.100");    
 
     return <Heading color={headingColor} size="2xl" my="10px" {...props}/>
 }
 
 const H2 = (props) => {
 
-    const headingColor = useColorModeValue("gray.800", "gray.300");    
+    const headingColor = useColorModeValue("gray.800", "gray.100");    
 
     return <Heading color={headingColor} size="xl" my="10px" {...props}/>
 }
 
 const H3 = (props) => {
 
-    const headingColor = useColorModeValue("gray.800", "gray.300");    
+    const headingColor = useColorModeValue("gray.800", "gray.100");    
 
     return <Heading fontFamily={'Ubuntu'} color={headingColor} size="lg" my="10px" {...props}/>
 }
 
 const H4 = (props) => {
 
-    const headingColor = useColorModeValue("gray.800", "gray.300");    
+    const headingColor = useColorModeValue("gray.800", "gray.100");    
 
     return <Heading fontFamily={'Ubuntu'} color={headingColor} size="sm" my="10px" {...props}/>
 }
 
 const P = (props) => {
-    const paragraphColor = useColorModeValue("gray.600", "gray.400");  
+    const paragraphColor = useColorModeValue("gray.700", "gray.300");  
 
     return <Text text-align="justify" text-justify="inter-word" fontFamily="Ubuntu" color={paragraphColor} {...props}/>
 }
 
 const UL = (props) => {
-    const ulColor = useColorModeValue("gray.600", "gray.400");
+    const ulColor = useColorModeValue("gray.700", "gray.300");
 
     return <UnorderedList color={ulColor}  {...props}/>
 }
 
 const OL = (props) => {
-    const olColor = useColorModeValue("gray.600", "gray.400");
+    const olColor = useColorModeValue("gray.700", "gray.300");
 
     return <OrderedList color={olColor} {...props}/>
 }
@@ -90,19 +91,19 @@ const HR = (props) => {
 }
 
 const MathEq = (props) => {
-    const mathEqColor = useColorModeValue("gray.600", "gray.400");
+    const mathEqColor = useColorModeValue("black", "white");
 
-    return <Box color={mathEqColor} {...props}/>
+    return <Box fontSize={props.fontSize} color={mathEqColor} {...props}/>
 }
 
 const CustomTable = (props) => {
-    const TableColor = useColorModeValue("gray.600", "gray.400");
+    const TableColor = useColorModeValue("gray.700", "gray.300");
 
     return <Table color={TableColor} {...props} />
 }
 
 const ApiImage = (props) => {
-    const captionColor = useColorModeValue("gray.500", "gray.500");
+    const captionColor = useColorModeValue("gray.600", "gray.400");
 
     return (
         <Flex flexDirection="column" alignSelf="center">
@@ -148,4 +149,3 @@ const components = {
 };
 
 export default components;
-

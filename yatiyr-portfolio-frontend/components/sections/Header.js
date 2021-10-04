@@ -1,7 +1,5 @@
-import { Text } from '@chakra-ui/layout'
-import { Flex, useProps } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import { HamburgerIcon, CloseIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import DarkModeSwitch from 'components/ui/DarkModeSwitch';
 import IconElement from 'components/ui/IconElement';
 import LinkIconElement from 'components/ui/LinkIconElement';
@@ -16,12 +14,6 @@ import { useColorModeValue,
          MenuButton,
          MenuList,
          MenuItem,
-         MenuItemOption,
-         MenuGroup,
-         MenuOptionGroup,
-         MenuIcon,
-         MenuCommand,
-         MenuDivider,
          Box } from "@chakra-ui/react";
 import { isAuthorized } from 'utils/auth0';
 
@@ -150,8 +142,6 @@ const Header = (props) => {
 
   const menuItemHoverColor = useColorModeValue("gray.200", "gray.700");
 
-  const borderHandler = (menuToggled) => (menuToggled ? "0px" : "2px")
-
   const steamIconColor = useColorModeValue("gray.700", "gray.300");
   const steamIconHoverColor = useColorModeValue("black", "gray.50");
 
@@ -197,6 +187,7 @@ const Header = (props) => {
 
       <Box display="flex" flexDirection="row">
         <DarkModeSwitch 
+          height="4rem"
           display={{sm: "none", lmd: "flex", md: "flex", lg: "flex", xl: "flex", "2xl": "flex"}}
           margin="0 0 0 20px" 
           baseColor={iconBaseColor} 
@@ -209,7 +200,7 @@ const Header = (props) => {
           activeColor={logoActiveColor}
           backgroundColor={backgroundColor}
           activeBackgroundColor={backgroundColor}
-          display={{sm: "none", lmd: "flex", md: "flex", lg: "flex", xl: "flex", "2xl": "flex"}}/>
+          display={{sm: "none", lmd: "none", md: "flex", lg: "flex", xl: "flex", "2xl": "flex"}}/>
       </Box>
 
       <Flex
@@ -222,9 +213,9 @@ const Header = (props) => {
         backgroundColor={backgroundColor}
         transition="background .3s, color .3s"
         mx="20px">
-        <HeaderLink fontSize="2xl" to="/" text="Home" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>          
-        <HeaderLink fontSize="2xl" to="/about" text="About" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
-        <HeaderLink fontSize="2xl" to="/blog" text="Blog" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+        <HeaderLink fontSize={{sm: "xl", lmd: "xl", md: "2xl", lg: "2xl", xl: "2xl", "2xl": "2xl"}} to="/" text="Home" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>          
+        <HeaderLink fontSize={{sm: "xl", lmd: "xl", md: "2xl", lg: "2xl", xl: "2xl", "2xl": "2xl"}} to="/about" text="About" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+        <HeaderLink fontSize={{sm: "xl", lmd: "xl", md: "2xl", lg: "2xl", xl: "2xl", "2xl": "2xl"}} to="/blog" text="Blog" baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
       </Flex>
 
 
@@ -307,9 +298,9 @@ const Header = (props) => {
           overflow="hidden"
           height="100%"
           >
-            <HeaderLink fontSize="4xl" width="100%" height="100%" to="/" text="Home" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>            
-            <HeaderLink fontSize="4xl" width="100%" height="100%" to="/about" text="About" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
-            <HeaderLink fontSize="4xl" width="100%" height="100%" to="/blog" text="Blog" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+            <HeaderLink fontSize="3xl" width="100%" height="100%" to="/" text="Home" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>            
+            <HeaderLink fontSize="3xl" width="100%" height="100%" to="/about" text="About" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
+            <HeaderLink fontSize="3xl" width="100%" height="100%" to="/blog" text="Blog" hoverBackgroundColor={menuItemHoverColor} baseColor={headerLinkBaseColor} hoverColor={headerLinkHoverColor} activeColor={headerLinkActiveColor} activeBackgroundColor={backgroundColor}/>
 
             { !props.loading && 
               <>
@@ -340,9 +331,9 @@ const Header = (props) => {
               justifyContent="center"
               height="50%"
               >
-              <LinkIconElement padding="2rem 2rem 2rem 2rem"to="https://steamcommunity.com/id/yatiyr" baseColor={steamIconColor} hoverColor={steamIconHoverColor} activeColor={steamIconColor} icon={FaSteam}/>        
-              <LinkIconElement padding="2rem 2rem 2rem 2rem"to="https://www.linkedin.com/in/eren-dere/" baseColor={linkedinIconColor} hoverColor={linkedinIconHoverColor} activeColor={linkedinIconColor} icon={FaLinkedin}/>                
-              <LinkIconElement padding="2rem 2rem 2rem 2rem"to="https://github.com/yatiyr/" baseColor={steamIconColor} hoverColor={steamIconHoverColor} activeColor={steamIconColor} icon={FaGithub}/>
+              <LinkIconElement padding="2.5rem 2.5rem 2.5rem 2.5rem"to="https://steamcommunity.com/id/yatiyr" baseColor={steamIconColor} hoverColor={steamIconHoverColor} activeColor={steamIconColor} icon={FaSteam}/>        
+              <LinkIconElement padding="2.5rem 2.5rem 2.5rem 2.5rem"to="https://www.linkedin.com/in/eren-dere/" baseColor={linkedinIconColor} hoverColor={linkedinIconHoverColor} activeColor={linkedinIconColor} icon={FaLinkedin}/>                
+              <LinkIconElement padding="2.5rem 2.5rem 2.5rem 2.5rem"to="https://github.com/yatiyr/" baseColor={steamIconColor} hoverColor={steamIconHoverColor} activeColor={steamIconColor} icon={FaGithub}/>
             </Flex>            
         </Flex>     
 

@@ -6,7 +6,7 @@ import Link from "next/link";
 const ProjectInfoBox = (props) => {
 
     const cardContainerBg = useColorModeValue("white", "gray.900");
-    const cardBorder      = useColorModeValue("none", "1px");
+    const cardBorder      = useColorModeValue("none", "none");
     const githubIconColor = useColorModeValue("gray.900", "gray.50");
 
     return (

@@ -6,7 +6,7 @@ import Link from "next/link";
 const BlogInfoBox = (props) => {
 
     const cardContainerBg = useColorModeValue("white", "gray.900");
-    const cardBorder      = useColorModeValue("none", "2px");
+    const cardBorder      = useColorModeValue("none", "none");
     
     return (
         <Link href={`blog/${props.slug}`} passHref>
