@@ -6,7 +6,7 @@ This work is on progress. I will implement functionalities after I finish fronte
 
 ## Portfolio App
 
-This project is right now deployed on my instance in aws. It can be seen by navigating to [here](http://3.64.124.142/).
+This project is right now deployed on my instance in aws. It can be seen by navigating to [here](http://18.196.155.138/).
 Both api and frontend are running on that instance.
 
 I will add a lot of blogs later. Right now, It seems that core functionality of my application has been finished. I can
