@@ -2,6 +2,7 @@ const config = require('../config/dev');
 const mongoose = require('mongoose');
 
 require('./models/blog');
+require('./models/view');
 
 exports.connect = () => {
     return mongoose.connect(config.DB_URI, {

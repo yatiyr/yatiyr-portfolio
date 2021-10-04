@@ -20,7 +20,8 @@ const Blog = (props) => {
     <BaseLayout
       user={data}
       loading={loading}
-      backgroundColor={backgroundColor}>
+      backgroundColor={backgroundColor}
+      page="Blog">
         <Box
           display="flex"
           flexDirection="column"

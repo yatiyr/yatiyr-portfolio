@@ -4,6 +4,8 @@ import Header from 'components/sections/Header';
 import DarkModeSwitch from 'components/ui/DarkModeSwitch';
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import ViewApi from 'lib/api/views';
+import axios from 'axios';
 
 const BaseLayout = (props) => {
 
@@ -12,8 +14,26 @@ const BaseLayout = (props) => {
   const iconHoverColor  = useColorModeValue("black", "white");
   const iconActiveColor = useColorModeValue("black", "white");
   const [showHeader, setShowHeader] = useState(true);
-  const controllHeader = () => {
 
+
+  const getClientLoc = async () => {
+    const res = await axios.get('https://geolocation-db.com/json/');
+
+    const viewData = {
+      ...res.data,
+      page: props.page
+    }
+
+    console.log(res.data);
+    try {
+      await new ViewApi().saveView(viewData);
+    } catch(error) {
+
+    }
+  }
+
+
+  const controllHeader = () => {
     if(window.scrollY > 200) {
       setShowHeader(false);
     }
@@ -23,6 +43,8 @@ const BaseLayout = (props) => {
   }
 
   useEffect(() => {
+
+    getClientLoc();
 
     window.addEventListener('scroll', controllHeader);
     return () => {

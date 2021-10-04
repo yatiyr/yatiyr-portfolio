@@ -13,7 +13,8 @@ const Cv = () => {
       <BaseLayout
         user={data}
         loading={loading}
-        backgroundColor={backgroundColor}>
+        backgroundColor={backgroundColor}
+        page="Cv">
         <>
             <Heading color={backgroundColor}>Cv page</Heading>
         </>                                                                                                            

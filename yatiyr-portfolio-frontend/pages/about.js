@@ -18,7 +18,8 @@ const About = () => {
       <BaseLayout
         user={data}
         loading={loading}
-        backgroundColor={backgroundColor}>
+        backgroundColor={backgroundColor}
+        page="About">
         <Flex flexDirection="column">
             <WelcomeSection/>
             <Heading

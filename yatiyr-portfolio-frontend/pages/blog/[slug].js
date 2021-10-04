@@ -18,7 +18,8 @@ const BlogContent = (props) => {
                 user={data}
                 loading={loading}
                 backgroundColor={backgroundColor}
-                frontMatter={props.frontMatter}>
+                frontMatter={props.frontMatter}
+                page={`blog/${props.frontMatter.slug}`}>
                     <MDXRemote {...props.mdxSource} components={{...MDXComponents}} />
             </BlogLayout>
         </>

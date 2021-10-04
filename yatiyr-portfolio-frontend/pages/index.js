@@ -16,7 +16,8 @@ const Home = (props) => {
       <BaseLayout
         user={data}
         loading={loading}
-        backgroundColor={backgroundColor}>
+        backgroundColor={backgroundColor}
+        page="Home">
         <IndexMain highlightedBlogs={props.blogs}/>                                                                                                             
       </BaseLayout>
     </>

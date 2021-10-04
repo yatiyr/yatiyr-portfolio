@@ -5,6 +5,8 @@ import FrontMatter from 'components/sections/FrontMatter'
 import Footer from "components/sections/Footer";
 import { useState, useEffect } from "react";
 import DarkModeSwitch from "components/ui/DarkModeSwitch";
+import axios from "axios";
+import ViewApi from "lib/api/views";
 
 const BlogLayout = (props) => {
 
@@ -21,9 +23,27 @@ const BlogLayout = (props) => {
         setShowHeader(true);
       }
     }
+
+    const getClientLoc = async () => {
+      const res = await axios.get('https://geolocation-db.com/json/');
+  
+      const viewData = {
+        ...res.data,
+        page: props.page
+      }
+  
+      console.log(res.data);
+      try {
+        await new ViewApi().saveView(viewData);
+      } catch(error) {
+  
+      }
+    }    
   
     useEffect(() => {
   
+      getClientLoc();
+      
       window.addEventListener('scroll', controllHeader);
       return () => {
         window.removeEventListener('scroll', controllHeader);
